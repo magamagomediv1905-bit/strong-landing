@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
       const isOpen = navMenu.classList.toggle('open');
+      mobileToggle.classList.toggle('open', isOpen);
       if (isOpen) {
         scrim.style.opacity = '1';
         scrim.style.pointerEvents = 'auto';
@@ -58,29 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
         scrim.style.pointerEvents = 'none';
         document.body.classList.remove('menu-open');
       }
-      
-      // Toggle burger icon active state
-      const spans = mobileToggle.querySelectorAll('span');
-      if (spans.length >= 3) {
-        spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5.5px)' : 'none';
-        spans[1].style.opacity = isOpen ? '0' : '1';
-        spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5.5px)' : 'none';
-      }
     });
 
     // Close menu when clicking backdrop scrim
     scrim.addEventListener('click', () => {
       navMenu.classList.remove('open');
+      mobileToggle.classList.remove('open');
       scrim.style.opacity = '0';
       scrim.style.pointerEvents = 'none';
       document.body.classList.remove('menu-open');
-      
-      const spans = mobileToggle.querySelectorAll('span');
-      if (spans.length >= 3) {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-      }
     });
 
     // Close menu when clicking link items
@@ -88,16 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('open');
+        mobileToggle.classList.remove('open');
         scrim.style.opacity = '0';
         scrim.style.pointerEvents = 'none';
         document.body.classList.remove('menu-open');
-        
-        const spans = mobileToggle.querySelectorAll('span');
-        if (spans.length >= 3) {
-          spans[0].style.transform = 'none';
-          spans[1].style.opacity = '1';
-          spans[2].style.transform = 'none';
-        }
       });
     });
   }
