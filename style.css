@@ -2966,8 +2966,16 @@ svg#d {
   
   .ctrl-btn {
     width: 100% !important;
-    padding: 14px 20px !important;
-    font-size: 13px !important;
+    min-height: 42px !important;
+    height: 42px !important;
+    padding: 10px 15px !important;
+    font-size: 11px !important;
+    letter-spacing: 1px !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important;
   }
   
   .scene-wrap {
@@ -2988,6 +2996,38 @@ svg#d {
   
   .partner-logo {
     font-size: 18px !important;
+  }
+
+  /* About Stats Mobile Styles */
+  .about-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px 16px !important;
+  }
+  
+  .stat-item {
+    position: relative !important;
+  }
+  
+  .stat-item::after {
+    display: none !important; /* Hide separator lines on mobile */
+  }
+  
+  .stat-num {
+    font-size: clamp(28px, 6.5vw, 36px) !important;
+    white-space: nowrap !important;
+    line-height: 1.1 !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .stat-label {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+  }
+  
+  /* Force Hide Header Button */
+  .navbar .nav-btn, .navbar .btn-primary.nav-btn {
+    display: none !important;
   }
 }
 
