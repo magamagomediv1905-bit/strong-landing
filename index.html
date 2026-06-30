@@ -8,9 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2.0">
+  <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
+  <div id="scroll-progress" style="position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0%; z-index: 1001; transition: width 0.1s ease;"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="home">
@@ -991,6 +992,75 @@
     </div>
   </section>
 
+  <!-- SECTION 7b: ФОТОГАЛЕРЕЯ РАБОТ -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="tag">Кадры с объектов</div>
+        <h2>Живой процесс монтажа<br><span>на наших площадках</span></h2>
+        <p class="sub">Реальные рабочие будни специалистов ООО «СТРОНГ» — от установки кронштейнов до финальной облицовки панелями.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery-1.jpg" alt="Монтаж подсистемы">
+          </div>
+          <div class="gallery-overlay-text">
+            <span class="gallery-idx">01</span>
+            <div class="gallery-info">
+              <span class="gallery-tag">Шаг 1. Каркас</span>
+              <h4 class="gallery-title">Установка несущих кронштейнов</h4>
+              <p class="gallery-desc">Разметка и надежное анкерное крепление кронштейнов с термоизолирующими прокладками.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery-2.jpg" alt="Теплоизоляция">
+          </div>
+          <div class="gallery-overlay-text">
+            <span class="gallery-idx">02</span>
+            <div class="gallery-info">
+              <span class="gallery-tag">Шаг 2. Утепление</span>
+              <h4 class="gallery-title">Укладка минераловатных плит</h4>
+              <p class="gallery-desc">Двухслойное утепление с перевязкой швов и фиксацией тарельчатыми дюбелями.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery-3.jpg" alt="Профили">
+          </div>
+          <div class="gallery-overlay-text">
+            <span class="gallery-idx">03</span>
+            <div class="gallery-info">
+              <span class="gallery-tag">Шаг 3. Профили</span>
+              <h4 class="gallery-title">Нивелирование направляющих</h4>
+              <p class="gallery-desc">Установка вертикальных алюминиевых или стальных реек по лазерному нивелиру.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="gallery-4.jpg" alt="Облицовка">
+          </div>
+          <div class="gallery-overlay-text">
+            <span class="gallery-idx">04</span>
+            <div class="gallery-info">
+              <span class="gallery-tag">Шаг 4. Финиш</span>
+              <h4 class="gallery-title">Навеска облицовочных панелей</h4>
+              <p class="gallery-desc">Крепление композитных кассет или керамогранита на кляммеры с выдержкой зазоров.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SECTION 8a: О КОМПАНИИ — ЦИФРЫ -->
   <section class="about-stats" id="about">
     <div class="container">
@@ -1029,7 +1099,7 @@
             <div class="consultant-phone-icon">📞</div>
             <div class="consultant-details">
               <span class="consultant-label">Главный инженер проектов</span>
-              <span class="consultant-name">Магомедов М. А.</span>
+              <span class="consultant-name">Ибрагимов Магомед Абдулкеримович</span>
               <a href="tel:+79253777775" class="consultant-phone">+7 (925) 377-77-75</a>
             </div>
           </div>
@@ -1182,7 +1252,7 @@
               <span class="contact-icon">📞</span>
               <div class="contact-value">
                 <a href="tel:+79253777775">+7 (925) 377-77-75</a>
-                <em>Главный инженер — Магомедов М. А.</em>
+                <em>Главный инженер — Ибрагимов М. А.</em>
               </div>
             </div>
             <div class="contact-item">
@@ -1210,6 +1280,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2.0"></script>
+  <script src="script.js?v=3.0"></script>
 </body>
 </html>

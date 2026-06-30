@@ -11,12 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileToggle = document.querySelector('.mobile-toggle');
   const navMenu = document.querySelector('.nav-menu');
 
-  // Navbar background change on scroll
+  // Navbar background change and scroll progress on scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
+    }
+
+    // Scroll progress bar
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    const progBar = document.getElementById('scroll-progress');
+    if (progBar) {
+      progBar.style.width = scrollPercent + '%';
     }
   });
 
