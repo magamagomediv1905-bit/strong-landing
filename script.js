@@ -30,14 +30,75 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Mobile Menu Toggle
+  let scrim = document.getElementById('nav-scrim');
+  if (!scrim) {
+    scrim = document.createElement('div');
+    scrim.id = 'nav-scrim';
+    scrim.style.position = 'fixed';
+    scrim.style.inset = '0';
+    scrim.style.background = 'rgba(12, 20, 32, 0.6)';
+    scrim.style.backdropFilter = 'blur(4px)';
+    scrim.style.webkitBackdropFilter = 'blur(4px)';
+    scrim.style.zIndex = '999';
+    scrim.style.opacity = '0';
+    scrim.style.pointerEvents = 'none';
+    scrim.style.transition = 'opacity 0.4s ease';
+    document.body.appendChild(scrim);
+  }
+
   if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
-      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-      // Toggle burger icon active state if styling exists
+      const isOpen = navMenu.classList.toggle('open');
+      if (isOpen) {
+        scrim.style.opacity = '1';
+        scrim.style.pointerEvents = 'auto';
+        document.body.classList.add('menu-open');
+      } else {
+        scrim.style.opacity = '0';
+        scrim.style.pointerEvents = 'none';
+        document.body.classList.remove('menu-open');
+      }
+      
+      // Toggle burger icon active state
       const spans = mobileToggle.querySelectorAll('span');
-      spans[0].style.transform = navMenu.style.display === 'flex' ? 'rotate(45deg) translate(5px, 5px)' : 'none';
-      spans[1].style.opacity = navMenu.style.display === 'flex' ? '0' : '1';
-      spans[2].style.transform = navMenu.style.display === 'flex' ? 'rotate(-45deg) translate(5px, -5px)' : 'none';
+      if (spans.length >= 3) {
+        spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5.5px)' : 'none';
+        spans[1].style.opacity = isOpen ? '0' : '1';
+        spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5.5px)' : 'none';
+      }
+    });
+
+    // Close menu when clicking backdrop scrim
+    scrim.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      scrim.style.opacity = '0';
+      scrim.style.pointerEvents = 'none';
+      document.body.classList.remove('menu-open');
+      
+      const spans = mobileToggle.querySelectorAll('span');
+      if (spans.length >= 3) {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+
+    // Close menu when clicking link items
+    const menuLinks = navMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        scrim.style.opacity = '0';
+        scrim.style.pointerEvents = 'none';
+        document.body.classList.remove('menu-open');
+        
+        const spans = mobileToggle.querySelectorAll('span');
+        if (spans.length >= 3) {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
     });
   }
 
