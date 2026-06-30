@@ -2784,18 +2784,24 @@ svg#d {
   
   .nav-container {
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     position: relative !important;
+    gap: 0 !important;
   }
   
   .logo-link {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
     margin: 0 !important;
-    z-index: 1002 !important; /* Keep logo link clickable & above other elements */
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: 12px !important; /* Spacing between menu button and logo */
+    z-index: 1002 !important;
+    transition: opacity 0.3s ease !important;
   }
   
   .logo-img {
@@ -2811,14 +2817,15 @@ svg#d {
     flex-direction: column !important;
     gap: 5px !important;
     cursor: pointer !important;
-    z-index: 1002 !important; /* Place above slide-out panel */
+    z-index: 1002 !important;
     width: 44px !important;
     height: 44px !important;
     justify-content: center !important;
     align-items: center !important;
-    order: -1 !important; /* Move to the left */
-    margin-right: auto !important;
-    margin-left: -10px !important;
+    order: 1 !important; /* far left */
+    margin: 0 !important;
+    position: relative !important;
+    transition: left 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
   
   .mobile-toggle span {
@@ -2835,7 +2842,13 @@ svg#d {
     background: var(--text-dark) !important;
   }
   
-  /* Neat Close Cross Icon when open */
+  /* Neat Close Cross Icon when open, moved to the top-right of the 270px drawer panel */
+  .mobile-toggle.open {
+    position: fixed !important;
+    top: 13px !important;
+    left: 215px !important; /* positions at top-right of 270px wide drawer */
+  }
+  
   .mobile-toggle.open span {
     background-color: var(--white) !important;
   }
@@ -2850,6 +2863,12 @@ svg#d {
   
   .mobile-toggle.open span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg) !important;
+  }
+  
+  /* Hide logo link when menu is open so it does not overlap with the drawer */
+  body.menu-open .logo-link {
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   /* Slide out to the Left */
