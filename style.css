@@ -2705,13 +2705,11 @@ svg#d {
    ========================================== */
 @media (max-width: 640px) {
   /* General Reset & Layout */
-  html {
-    -webkit-text-size-adjust: 100% !important;
-  }
-  
-  body {
+  html, body {
     overflow-x: hidden !important;
-    width: 100vw !important;
+    width: 100% !important;
+    position: relative !important;
+    -webkit-text-size-adjust: 100% !important;
   }
   
   img, iframe {
@@ -2833,12 +2831,17 @@ svg#d {
     box-shadow: -10px 0 35px rgba(0, 0, 0, 0.3) !important;
     z-index: 1000 !important;
     transform: translateX(100%) !important;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
     display: flex !important;
   }
   
   .nav-menu.open {
     transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
   
   .nav-menu li {
@@ -2859,7 +2862,7 @@ svg#d {
     color: var(--gold) !important;
   }
   
-  .nav-btn-wrap {
+  .nav-btn, .nav-btn-wrap {
     display: none !important; /* Hide desktop top-right button on mobile */
   }
   
