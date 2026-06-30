@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Устройство системы — ООО СТРОНГ</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0C1420;
+  --gold: #C8A96E;
+  --blue: #1A3A5C;
+}
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* HEADER */
+.hdr {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 22px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(12,20,32,0.85);
+  backdrop-filter: blur(8px);
+}
+.hdr-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 3px;
+}
+.hdr-logo span { color: var(--gold); }
+.hdr-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), #E8C98E);
+  width: 0%;
+  transition: width 0.4s ease;
+  z-index: 20;
+}
+
+/* MAIN LAYOUT */
+.main {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 60px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* 3D SCENE */
+.scene-wrap {
+  perspective: 1100px;
+  perspective-origin: 55% 48%;
+  flex-shrink: 0;
+}
+.system {
+  width: 280px;
+  height: 320px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-16deg) rotateY(32deg);
+}
+
+/* Layers */
+.lyr {
+  position: absolute;
+  width: 280px;
+  height: 320px;
+  border-radius: 1px;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1), opacity 0.7s ease;
+  opacity: 0;
+  cursor: pointer;
+}
+.lyr.active-hl { filter: drop-shadow(0 0 18px rgba(200,169,110,0.7)); }
+
+/* Front face = the div itself */
+/* Top face = ::before  */
+/* Right face = ::after */
+.lyr::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: 0; top: 0;
+  transform-origin: top center;
+  transform: rotateX(-90deg) translateZ(0);
+  height: var(--depth, 18px);
+}
+.lyr::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0;
+  height: 100%;
+  transform-origin: right center;
+  transform: rotateY(90deg) translateZ(0);
+  width: var(--depth, 18px);
+}
+
+/* WALL */
+.l-wall {
+  --depth: 40px;
+  background: linear-gradient(170deg, #7E8E9E 0%, #5A6A7A 60%, #46586A 100%);
+}
+.l-wall::before {
+  background: linear-gradient(90deg, #6A7A8A 0%, #4A5A6A 100%);
+  height: 40px;
+}
+.l-wall::after {
+  background: linear-gradient(180deg, #5A6A7A 0%, #3A4A5A 100%);
+  width: 40px;
+}
+/* Brick pattern */
+.l-wall .fx {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0px, transparent 29px, rgba(0,0,0,0.18) 29px, rgba(0,0,0,0.18) 31px),
+    repeating-linear-gradient(90deg, transparent 0px, transparent 49px, rgba(0,0,0,0.1) 49px, rgba(0,0,0,0.1) 50px);
+  pointer-events: none;
+}
+
+/* BRACKET */
+.l-bracket {
+  --depth: 4px;
+  background: linear-gradient(160deg, #3E5060 0%, #2A3A48 100%);
+}
+.l-bracket::before { background: #202E3A; height: 4px; }
+.l-bracket::after  { background: #182630; width: 4px; }
+.l-bracket .fx {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(90deg, rgba(200,169,110,0.12), rgba(200,169,110,0.12) 1px, transparent 1px, transparent 48px);
+}
+
+/* THERMAL PAD */
+.l-pad {
+  --depth: 3px;
+  height: 60px !important;
+  top: 130px;
+  background: linear-gradient(160deg, #C85430 0%, #A03820 100%);
+  width: 50px !important;
+}
+.l-pad::before { background: #8A2010; height: 3px; }
+.l-pad::after  { background: #7A1808; width: 3px; }
+
+/* INSULATION */
+.l-insul {
+  --depth: 28px;
+  background: linear-gradient(160deg, #F0A830 0%, #D08820 70%, #B07010 100%);
+}
+.l-insul::before { background: #C07818; height: 28px; }
+.l-insul::after  { background: #A06010; width: 28px; }
+.l-insul .fx {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 7px, transparent 7px, transparent 14px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 7px, transparent 7px, transparent 14px);
+}
+
+/* MEMBRANE */
+.l-mem {
+  --depth: 2px;
+  background: linear-gradient(160deg, rgba(180,205,225,0.75) 0%, rgba(150,180,205,0.65) 100%);
+  border: 1px solid rgba(200,220,240,0.4);
+}
+.l-mem::before { background: rgba(140,170,195,0.6); height: 2px; }
+.l-mem::after  { background: rgba(120,155,180,0.5); width: 2px; }
+.l-mem .fx {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+}
+
+/* RAIL */
+.l-rail {
+  --depth: 5px;
+  width: 12px !important;
+  background: linear-gradient(160deg, #6A7880 0%, #4A5860 100%);
+}
+.l-rail::before { background: #3A4850; height: 5px; }
+.l-rail::after  { background: #2A3840; width: 5px; }
+
+/* AIR GAP */
+.l-gap {
+  --depth: 2px;
+  background: transparent;
+  border: 1px dashed rgba(74,140,200,0.4);
+  box-sizing: border-box;
+}
+.l-gap::before { background: rgba(74,140,200,0.15); height: 2px; }
+.l-gap::after  { background: rgba(74,140,200,0.1); width: 2px; }
+.l-gap .fx {
+  position: absolute; inset: 0;
+  background: rgba(74,140,200,0.04);
+}
+/* Air flow arrows */
+.l-gap .arrows {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+}
+.arrow-up {
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid rgba(74,140,200,0.4);
+  animation: floatUp 1.8s ease-in-out infinite;
+}
+.arrow-up:nth-child(2) { animation-delay: 0.6s; }
+.arrow-up:nth-child(3) { animation-delay: 1.2s; }
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(20px); }
+  50%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* CLADDING */
+.l-clad {
+  --depth: 8px;
+  background: linear-gradient(170deg, #2A3A4C 0%, #18283A 50%, #0E1E2C 100%);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+}
+.l-clad::before { background: #0A1824; height: 8px; }
+.l-clad::after  { background: #060E18; width: 8px; }
+.l-clad .fx {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.04) 59px, rgba(255,255,255,0.04) 61px);
+}
+.l-clad .shine {
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.07) 0%, transparent 50%);
+}
+
+/* GAP LABEL (40mm indicator) */
+.gap-label {
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  color: rgba(74,140,200,0.8);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+.l-gap.lyr.assembled .gap-label { opacity: 1; }
+
+/* ===================== LABELS PANEL ===================== */
+.labels-col {
+  flex: 1;
+  max-width: 420px;
+}
+.sec-tag {
+  font-family: 'Oswald', sans-serif;
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+.sec-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+.sec-title span { color: var(--gold); }
+
+.step-list { display: flex; flex-direction: column; }
+.step {
+  display: flex;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s;
+  cursor: pointer;
+  border-radius: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.step.show { opacity: 1; transform: translateX(0); }
+.step:hover { background: rgba(255,255,255,0.03); }
+.step.hl { background: rgba(200,169,110,0.07); }
+
+.step-n {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  color: rgba(200,169,110,0.5);
+  letter-spacing: 1px;
+  min-width: 22px;
+  padding-top: 2px;
+}
+.step-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: box-shadow 0.3s;
+}
+.step.hl .step-dot { box-shadow: 0 0 0 3px rgba(200,169,110,0.35); }
+.step-body {}
+.step-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+.step.hl .step-name { color: var(--gold); }
+.step-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.65;
+  margin-top: 3px;
+}
+
+/* CONTROLS */
+.ctrl-bar {
+  position: fixed;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  padding: 9px 22px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn:hover { background: rgba(200,169,110,0.15); border-color: rgba(200,169,110,0.4); color: var(--gold); }
+.btn.on { background: var(--gold); border-color: var(--gold); color: #0C1420; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="prog"></div>
+
+<div class="hdr">
+  <div class="hdr-logo">ООО <span>СТРОНГ</span></div>
+  <div class="hdr-title">Устройство системы</div>
+</div>
+
+<div class="main">
+
+  <!-- 3D SCENE -->
+  <div class="scene-wrap">
+    <div class="system" id="sys">
+
+      <!-- L0: Wall -->
+      <div class="lyr l-wall" id="l0" onclick="hl(0)" title="Стена здания">
+        <div class="fx"></div>
+      </div>
+
+      <!-- L1: Bracket -->
+      <div class="lyr l-bracket" id="l1" onclick="hl(1)" title="Кронштейн">
+        <div class="fx"></div>
+      </div>
+
+      <!-- L2: Insulation -->
+      <div class="lyr l-insul" id="l2" onclick="hl(2)" title="Утеплитель">
+        <div class="fx"></div>
+      </div>
+
+      <!-- L3: Membrane -->
+      <div class="lyr l-mem" id="l3" onclick="hl(3)" title="Мембрана">
+        <div class="fx"></div>
+      </div>
+
+      <!-- L4: Rail -->
+      <div class="lyr l-rail" id="l4" onclick="hl(4)" title="Направляющая">
+      </div>
+
+      <!-- L5: Air Gap -->
+      <div class="lyr l-gap" id="l5" onclick="hl(5)" title="Воздушный зазор">
+        <div class="fx"></div>
+        <div class="arrows">
+          <div class="arrow-up"></div>
+          <div class="arrow-up"></div>
+          <div class="arrow-up"></div>
+        </div>
+      </div>
+
+      <!-- L6: Cladding -->
+      <div class="lyr l-clad" id="l6" onclick="hl(6)" title="Облицовка">
+        <div class="fx"></div>
+        <div class="shine"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LABELS -->
+  <div class="labels-col">
+    <div class="sec-tag">Конструкция</div>
+    <div class="sec-title">Как устроена<br><span>система</span></div>
+
+    <div class="step-list" id="steps">
+
+      <div class="step" data-i="0" onclick="hl(0)">
+        <span class="step-n">01</span>
+        <div class="step-dot" style="background:#6A7A8A"></div>
+        <div class="step-body">
+          <div class="step-name">Стена здания</div>
+          <div class="step-desc">Несущая основа — кирпич, бетон, газоблок. Фасадная система монтируется поверх любой стены без штукатурки.</div>
+        </div>
+      </div>
+
+      <div class="step" data-i="1" onclick="hl(1)">
+        <span class="step-n">02</span>
+        <div class="step-dot" style="background:#3A4A5C"></div>
+        <div class="step-body">
+          <div class="step-name">Кронштейн + анкерный дюбель</div>
+          <div class="step-desc">Несущий кронштейн из оцинкованной или нержавеющей стали крепится к стене. Термоизолирующая прокладка исключает «мостик холода».</div>
+        </div>
+      </div>
+
+      <div class="step" data-i="2" onclick="hl(2)">
+        <span class="step-n">03</span>
+        <div class="step-dot" style="background:#F0A830"></div>
+        <div class="step-body">
+          <div class="step-name">Утеплитель</div>
+          <div class="step-desc">Минеральная вата крепится тарельчатыми дюбелями. Обеспечивает тепло- и звукоизоляцию. Толщина — от 50 до 150 мм.</div>
+        </div>
+      </div>
+
+      <div class="step" data-i="3" onclick="hl(3)">
+        <span class="step-n">04</span>
+        <div class="step-dot" style="background:#A0C0D8"></div>
+        <div class="step-body">
+          <div class="step-name">Гидроветрозащитная мембрана</div>
+          <div class="step-desc">Паропроницаемая мембрана защищает утеплитель от влаги и продувания, сохраняя все теплоизоляционные свойства.</div>
+        </div>
+      </div>
+
+      <div class="step" data-i="4" onclick="hl(4)">
+        <span class="step-n">05</span>
+        <div class="step-dot" style="background:#5A6878"></div>
+        <div class="step-body">
+          <div class="step-name">Вертикальная направляющая</div>
+          <div class="step-desc">Алюминиевый или стальной профиль крепится к ответным частям кронштейнов. Служит основой для монтажа облицовки.</div>
+        </div>
+      </div>
+
+      <div class="step" data-i="5" onclick="hl(5)">
+        <span class="step-n">06</span>
+        <div class="step-dot" style="background:#4A8CC8"></div>
+        <div class="step-body">
+          <div class="step-name">Воздушный зазор — 40 мм</div>
+          <div class="step-desc">Обязательный зазор не менее 40 мм. Воздух циркулирует снизу вверх, выносит точку росы наружу и устраняет конденсат.</div>
+        </div>
+      </div>
+
+      <div class="step" data-i="6" onclick="hl(6)">
+        <span class="step-n">07</span>
+        <div class="step-dot" style="background:#2A3A4A"></div>
+        <div class="step-body">
+          <div class="step-name">Облицовочная панель</div>
+          <div class="step-desc">Финишный слой — керамогранит, АКП, натуральный камень, металлокассеты или фиброцемент. Срок службы до 50 лет.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="ctrl-bar">
+  <button class="btn" id="bExp"  onclick="doExplode()">Разобрать</button>
+  <button class="btn on" id="bAsm" onclick="doAssemble()">Собрать</button>
+  <button class="btn" onclick="restart()">↻ Сначала</button>
+</div>
+
+<script>
+// Layer config: [assembled Z, exploded Z, label index]
+const LAYERS = [
+  { id:'l0', az:0,   ez:-620 },
+  { id:'l1', az:24,  ez:-440 },
+  { id:'l2', az:50,  ez:-260 },
+  { id:'l3', az:80,  ez:-130 },
+  { id:'l4', az:85,  ez:-50  },
+  { id:'l5', az:108, ez:60   },
+  { id:'l6', az:130, ez:200  },
+];
+
+let timers = [];
+function clr() { timers.forEach(clearTimeout); timers = []; }
+
+function setLayer(id, z, opacity, ms) {
+  const el = document.getElementById(id);
+  el.style.transition = `transform ${ms}ms cubic-bezier(0.22,1,0.36,1), opacity ${Math.round(ms*0.7)}ms ease`;
+  el.style.transform = `translateZ(${z}px)`;
+  el.style.opacity = opacity;
+}
+
+function doAssemble() {
+  clr();
+  document.getElementById('bAsm').classList.add('on');
+  document.getElementById('bExp').classList.remove('on');
+  document.getElementById('prog').style.width = '0%';
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('show','hl'));
+
+  // Reset all to exploded
+  LAYERS.forEach(l => {
+    const el = document.getElementById(l.id);
+    el.style.transition = 'none';
+    el.style.transform = `translateZ(${l.ez}px)`;
+    el.style.opacity = '0';
+  });
+
+  setTimeout(() => {
+    LAYERS.forEach((l, i) => {
+      const delay = 200 + i * 280;
+      timers.push(setTimeout(() => {
+        setLayer(l.id, l.az, '1', 900);
+        // show step label
+        const steps = document.querySelectorAll('.step');
+        if (steps[i]) {
+          setTimeout(() => steps[i].classList.add('show'), 280);
+        }
+        // progress bar
+        document.getElementById('prog').style.width = `${Math.round((i+1)/LAYERS.length*100)}%`;
+      }, delay));
+    });
+  }, 80);
+}
+
+function doExplode() {
+  clr();
+  document.getElementById('bExp').classList.add('on');
+  document.getElementById('bAsm').classList.remove('on');
+  clearHl();
+
+  LAYERS.forEach((l, i) => {
+    timers.push(setTimeout(() => {
+      setLayer(l.id, l.ez, '1', 700);
+    }, i * 70));
+  });
+}
+
+function hl(idx) {
+  clearHl();
+  document.getElementById('l'+idx).classList.add('active-hl');
+  const steps = document.querySelectorAll('.step');
+  if (steps[idx]) steps[idx].classList.add('hl');
+}
+function clearHl() {
+  LAYERS.forEach(l => document.getElementById(l.id).classList.remove('active-hl'));
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('hl'));
+}
+
+function restart() {
+  clr();
+  LAYERS.forEach(l => {
+    const el = document.getElementById(l.id);
+    el.style.transition = 'none';
+    el.style.opacity = '0';
+  });
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('show','hl'));
+  document.getElementById('prog').style.width = '0%';
+  document.getElementById('bAsm').classList.add('on');
+  document.getElementById('bExp').classList.remove('on');
+  setTimeout(doAssemble, 300);
+}
+
+// Auto-start
+setTimeout(doAssemble, 700);
+
+// Auto-cycle
+setInterval(() => {
+  const anyExploded = LAYERS.some(l => {
+    const el = document.getElementById(l.id);
+    const z = parseFloat(el.style.transform.replace('translateZ(','').replace('px)',''));
+    return Math.abs(z - l.az) > 5;
+  });
+  if (!anyExploded) return;
+}, 500);
+</script>
+</body>
+</html>

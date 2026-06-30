@@ -1,0 +1,6 @@
+strong-landing.zip
+.DS_Store
+*.zip
+.gemini/
+.system_generated/
+scratch/

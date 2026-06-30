@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Материал подконструкции — ООО СТРОНГ</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #F3F1EC;
+  --accent: #1A3A5C;
+  --gold: #C8A96E;
+  --dark: #1A1A28;
+  --mid: #5A5A6A;
+}
+body {
+  background: var(--bg);
+  font-family: 'Raleway', sans-serif;
+  padding: 80px 40px;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.section-head {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.tag {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  padding: 0 28px;
+  position: relative;
+}
+.tag::before, .tag::after {
+  content: '';
+  position: absolute;
+  top: 50%; width: 20px; height: 1px;
+  background: var(--gold); opacity: 0.7;
+}
+.tag::before { right: 100%; margin-right: -20px; }
+.tag::after  { left:  100%; margin-left:  -20px; }
+h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 52px;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.05;
+}
+h2 span { color: var(--accent); }
+.sub {
+  font-size: 15px;
+  color: var(--mid);
+  margin-top: 14px;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CARDS GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(26,58,92,0.07);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  cursor: pointer;
+  position: relative;
+}
+.card.visible {
+  animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 24px 64px rgba(26,58,92,0.14);
+}
+@keyframes cardIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PHOTO */
+.card-photo {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.card:hover .card-photo img {
+  transform: scale(1.05);
+}
+.card-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(26,58,92,0.5) 100%);
+}
+
+/* TIER BADGE */
+.tier-badge {
+  position: absolute;
+  top: 16px; left: 16px;
+  padding: 5px 14px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  font-weight: 400;
+}
+.badge-econ   { background: rgba(255,255,255,0.92); color: #5A6A7A; }
+.badge-std    { background: rgba(26,58,92,0.88);    color: white; }
+.badge-prem   { background: var(--gold);             color: white; }
+
+/* BODY */
+.card-body {
+  padding: 28px 28px 32px;
+}
+.card-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+.card-material {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.econ-col  { color: #7A8A9A; }
+.std-col   { color: var(--accent); }
+.prem-col  { color: var(--gold); }
+
+.card-desc {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+
+/* SPECS */
+.specs { display: flex; flex-direction: column; gap: 0; }
+.spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(26,58,92,0.07);
+  font-size: 12.5px;
+}
+.spec:last-child { border-bottom: none; }
+.spec-key { color: var(--mid); font-weight: 500; }
+.spec-val { font-weight: 600; color: var(--dark); font-size: 12px; }
+
+/* LEFT ACCENT BAR */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 4px;
+  height: 0;
+  transition: height 0.6s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.card.visible::before { height: 100%; }
+.card:nth-child(1)::before { background: #8A9AA8; }
+.card:nth-child(2)::before { background: var(--accent); }
+.card:nth-child(3)::before { background: var(--gold); }
+
+/* BOTTOM CTA */
+.bottom {
+  max-width: 1140px;
+  margin: 52px auto 0;
+  background: var(--accent);
+  border-radius: 4px;
+  padding: 36px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.bottom.visible { opacity: 1; transform: translateY(0); }
+.bottom-text {}
+.bottom-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.bottom-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+.bottom-btn {
+  background: var(--gold);
+  border: none;
+  color: white;
+  padding: 14px 36px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.bottom-btn:hover { background: #E0C080; transform: translateY(-2px); }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  h2 { font-size: 36px; }
+  .bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="section-head">
+  <div class="tag">Подконструкция</div>
+  <h2>Материал <span>каркаса</span></h2>
+  <p class="sub">Три варианта подконструкции под любой бюджет и условия эксплуатации</p>
+</div>
+
+<div class="grid" id="grid">
+
+  <!-- ЭКОНОМ -->
+  <div class="card">
+    <div class="card-photo">
+      <img src="Эконом (оцинкованная сталь).png" alt="Оцинкованная сталь">
+      <div class="card-photo-overlay"></div>
+      <div class="tier-badge badge-econ">Эконом</div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Оцинкованная сталь</div>
+      <div class="card-material econ-col">Горячее цинкование</div>
+      <p class="card-desc">Стандартное решение для большинства объектов. Цинковое покрытие надёжно защищает сталь от коррозии в умеренном климате.</p>
+      <div class="specs">
+        <div class="spec">
+          <span class="spec-key">Покрытие</span>
+          <span class="spec-val">Цинкование</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Срок службы</span>
+          <span class="spec-val">до 25 лет</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Применение</span>
+          <span class="spec-val">Умеренный климат</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Стоимость</span>
+          <span class="spec-val">Оптимальная</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- СТАНДАРТ -->
+  <div class="card">
+    <div class="card-photo">
+      <img src="Стандарт (окрашенная сталь 50мкм).png" alt="Окрашенная сталь">
+      <div class="card-photo-overlay"></div>
+      <div class="tier-badge badge-std">Стандарт</div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Окрашенная сталь</div>
+      <div class="card-material std-col">Полимерное покрытие 50 мкм</div>
+      <p class="card-desc">Оцинкованная сталь с полимерным покрытием толщиной 50 мкм. Повышенная стойкость к атмосферным воздействиям и механическим повреждениям.</p>
+      <div class="specs">
+        <div class="spec">
+          <span class="spec-key">Покрытие</span>
+          <span class="spec-val">Полимер 50 мкм</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Срок службы</span>
+          <span class="spec-val">до 35 лет</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Применение</span>
+          <span class="spec-val">Любой климат</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Стоимость</span>
+          <span class="spec-val">Умеренная</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПРЕМИУМ -->
+  <div class="card">
+    <div class="card-photo">
+      <img src="Премиум (нержавеющая сталь).png" alt="Нержавеющая сталь">
+      <div class="card-photo-overlay"></div>
+      <div class="tier-badge badge-prem">Премиум</div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Нержавеющая сталь</div>
+      <div class="card-material prem-col">AISI 304 / 316</div>
+      <p class="card-desc">Максимальная долговечность и стойкость к агрессивной среде. Рекомендуется для морского климата, промышленных зон и объектов высокого класса.</p>
+      <div class="specs">
+        <div class="spec">
+          <span class="spec-key">Покрытие</span>
+          <span class="spec-val">Нержавеющая сталь</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Срок службы</span>
+          <span class="spec-val">до 50 лет</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Применение</span>
+          <span class="spec-val">Агрессивная среда</span>
+        </div>
+        <div class="spec">
+          <span class="spec-key">Стоимость</span>
+          <span class="spec-val">Премиум</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom" id="bottom">
+  <div class="bottom-text">
+    <div class="bottom-title">Не знаете какой вариант выбрать?</div>
+    <div class="bottom-sub">Наш инженер подберёт оптимальный материал исходя из климата, типа объекта и бюджета — бесплатно.</div>
+  </div>
+  <button class="bottom-btn">Получить консультацию →</button>
+</div>
+
+<script>
+// Animate cards on load
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, i) => {
+  setTimeout(() => card.classList.add('visible'), 200 + i * 150);
+});
+
+// Animate bottom bar
+const io = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    setTimeout(() => document.getElementById('bottom').classList.add('visible'), 200);
+    io.disconnect();
+  }
+}, { threshold: 0.3 });
+io.observe(document.getElementById('bottom'));
+
+// Trigger bottom if already visible
+setTimeout(() => {
+  document.getElementById('bottom').classList.add('visible');
+}, 900);
+</script>
+</body>
+</html>

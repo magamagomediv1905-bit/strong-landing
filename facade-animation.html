@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вентилируемый фасад — ООО СТРОНГ</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #F3F1EC;
+  --accent: #1A3A5C;
+  --text-dark: #1A1A28;
+  --text-mid: #5A5A6A;
+}
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+.section {
+  max-width: 1160px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.tag {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+  margin-bottom: 26px;
+}
+h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--text-dark);
+  margin-bottom: 26px;
+}
+h2 em { color: var(--accent); font-style: normal; }
+.body {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin-bottom: 40px;
+}
+.stats {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid rgba(26,58,92,0.18);
+  padding-top: 28px;
+}
+.stat-n {
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  display: block;
+}
+.stat-l {
+  font-size: 11.5px;
+  color: var(--text-mid);
+  font-weight: 500;
+  line-height: 1.45;
+  display: block;
+  margin-top: 6px;
+  max-width: 88px;
+}
+.diagram-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+svg#d {
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  overflow: visible;
+}
+.lg { opacity: 0; will-change: opacity, transform; }
+.steps {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(26,58,92,0.2);
+  transition: background 0.4s;
+}
+.dot.active { background: var(--accent); }
+.replay-area {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+#btn {
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  padding: 9px 26px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.4s, background 0.2s, color 0.2s;
+}
+#btn:hover { background: var(--accent); color: white; }
+#btn.on { opacity: 1; }
+@media (max-width: 880px) {
+  .section { grid-template-columns: 1fr; gap: 44px; }
+  h2 { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+<div class="section">
+
+  <!-- TEXT -->
+  <div>
+    <div class="tag">Технология</div>
+    <h2>Навесной<br>вентилируемый<br><em>фасад</em></h2>
+    <p class="body">
+      Навесной вентилируемый фасад — это система из несущего каркаса, утеплителя, ветро-гидрозащитной мембраны и облицовочного материала. Воздушный зазор минимум 40 мм между стеной и панелью выносит точку росы наружу, устраняет сырость и снижает затраты на отопление. Срок эксплуатации — до 50 лет без ремонта.
+    </p>
+    <div class="stats">
+      <div><span class="stat-n">50</span><span class="stat-l">лет без ремонта</span></div>
+      <div><span class="stat-n">40</span><span class="stat-l">мм воздушный зазор</span></div>
+      <div><span class="stat-n">−30%</span><span class="stat-l">затрат на отопление</span></div>
+    </div>
+  </div>
+
+  <!-- DIAGRAM -->
+  <div class="diagram-col">
+    <svg id="d" viewBox="-55 10 620 385" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#A8B4BC"/><stop offset="100%" stop-color="#8C9AA8"/>
+        </linearGradient>
+        <linearGradient id="mg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#B0BCC8"/><stop offset="55%" stop-color="#D8E4EC"/><stop offset="100%" stop-color="#B0BCC8"/>
+        </linearGradient>
+        <linearGradient id="cg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1E2E3C"/><stop offset="40%" stop-color="#2A3C4E"/><stop offset="100%" stop-color="#1C2C3A"/>
+        </linearGradient>
+        <linearGradient id="ig" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#E09020"/><stop offset="100%" stop-color="#F0A830"/>
+        </linearGradient>
+        <pattern id="ip" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="18" x2="18" y2="0" stroke="#C87818" stroke-width="1.2" opacity="0.35"/>
+        </pattern>
+      </defs>
+
+      <!-- WALL (always visible) -->
+      <rect x="10" y="30" width="88" height="320" fill="url(#wg)"/>
+      <line x1="10" y1="75"  x2="98" y2="75"  stroke="#7A8A98" stroke-width="0.8" opacity="0.6"/>
+      <line x1="10" y1="113" x2="98" y2="113" stroke="#7A8A98" stroke-width="0.8" opacity="0.6"/>
+      <line x1="10" y1="151" x2="98" y2="151" stroke="#7A8A98" stroke-width="0.8" opacity="0.6"/>
+      <line x1="10" y1="189" x2="98" y2="189" stroke="#7A8A98" stroke-width="0.8" opacity="0.6"/>
+      <line x1="10" y1="227" x2="98" y2="227" stroke="#7A8A98" stroke-width="0.8" opacity="0.6"/>
+      <line x1="10" y1="265" x2="98" y2="265" stroke="#7A8A98" stroke-width="0.8" opacity="0.6"/>
+      <line x1="10" y1="303" x2="98" y2="303" stroke="#7A8A98" stroke-width="0.8" opacity="0.6"/>
+      <line x1="54" y1="30"  x2="54" y2="350" stroke="#7A8A98" stroke-width="0.8" opacity="0.3"/>
+      <line x1="98" y1="30"  x2="98" y2="350" stroke="#6A7A88" stroke-width="1.2"/>
+      <!-- Wall label -->
+      <line x1="10" y1="190" x2="-12" y2="190" stroke="#9EAAB4" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <text x="-16" y="186" text-anchor="end" font-family="Raleway,sans-serif" font-size="11" fill="#5A6A7A" font-weight="600">Стена</text>
+      <text x="-16" y="200" text-anchor="end" font-family="Raleway,sans-serif" font-size="10" fill="#8A9AAA">здания</text>
+
+      <!-- ANCHORS -->
+      <g id="g-anchor" class="lg">
+        <circle cx="72" cy="94"  r="5.5" fill="#2C3C4A" stroke="#F3F1EC" stroke-width="1.5"/>
+        <circle cx="72" cy="190" r="5.5" fill="#2C3C4A" stroke="#F3F1EC" stroke-width="1.5"/>
+        <circle cx="72" cy="286" r="5.5" fill="#2C3C4A" stroke="#F3F1EC" stroke-width="1.5"/>
+        <line x1="98" y1="94"  x2="66" y2="94"  stroke="#2C3C4A" stroke-width="2"/>
+        <line x1="98" y1="190" x2="66" y2="190" stroke="#2C3C4A" stroke-width="2"/>
+        <line x1="98" y1="286" x2="66" y2="286" stroke="#2C3C4A" stroke-width="2"/>
+      </g>
+
+      <!-- BRACKETS -->
+      <g id="g-bracket" class="lg">
+        <rect x="98" y="86"  width="5" height="10" fill="#F0A030"/>
+        <rect x="98" y="182" width="5" height="10" fill="#F0A030"/>
+        <rect x="98" y="278" width="5" height="10" fill="#F0A030"/>
+        <rect x="98" y="86"  width="32" height="10" fill="#4A5A6A"/>
+        <rect x="98" y="86"  width="10" height="52" fill="#4A5A6A"/>
+        <rect x="98" y="182" width="32" height="10" fill="#4A5A6A"/>
+        <rect x="98" y="182" width="10" height="52" fill="#4A5A6A"/>
+        <rect x="98" y="278" width="32" height="10" fill="#4A5A6A"/>
+        <rect x="98" y="278" width="10" height="52" fill="#4A5A6A"/>
+        <rect x="98" y="86"  width="32" height="2" fill="white" opacity="0.12"/>
+        <rect x="98" y="182" width="32" height="2" fill="white" opacity="0.12"/>
+        <rect x="98" y="278" width="32" height="2" fill="white" opacity="0.12"/>
+      </g>
+
+      <!-- INSULATION -->
+      <g id="g-insul" class="lg">
+        <rect x="98" y="30" width="65" height="320" fill="url(#ig)"/>
+        <rect x="98" y="30" width="65" height="320" fill="url(#ip)"/>
+        <rect x="98" y="30" width="4"  height="320" fill="#C07010" opacity="0.4"/>
+      </g>
+
+      <!-- MEMBRANE -->
+      <g id="g-mem" class="lg">
+        <rect x="163" y="30" width="10" height="320" fill="url(#mg)"/>
+        <rect x="165" y="30" width="4"  height="320" fill="white" opacity="0.25"/>
+      </g>
+
+      <!-- RAIL -->
+      <g id="g-rail" class="lg">
+        <rect x="173" y="30" width="9" height="320" fill="#6A7880"/>
+        <rect x="175" y="30" width="5" height="320" fill="#7A8890" opacity="0.55"/>
+        <rect x="170" y="84"  width="14" height="14" fill="#58686E"/>
+        <rect x="170" y="180" width="14" height="14" fill="#58686E"/>
+        <rect x="170" y="276" width="14" height="14" fill="#58686E"/>
+        <circle cx="177" cy="91"  r="2.5" fill="#3A4A58"/>
+        <circle cx="177" cy="187" r="2.5" fill="#3A4A58"/>
+        <circle cx="177" cy="283" r="2.5" fill="#3A4A58"/>
+      </g>
+
+      <!-- AIR GAP -->
+      <g id="g-gap" class="lg">
+        <line x1="185" y1="30"  x2="185" y2="350" stroke="#A8B8C8" stroke-width="0.8" stroke-dasharray="5,4"/>
+        <line x1="223" y1="30"  x2="223" y2="350" stroke="#A8B8C8" stroke-width="0.8" stroke-dasharray="5,4"/>
+        <line x1="188" y1="190" x2="220" y2="190" stroke="#1A3A5C" stroke-width="1.5"/>
+        <polygon points="188,187 188,193 182,190" fill="#1A3A5C"/>
+        <polygon points="220,187 220,193 226,190" fill="#1A3A5C"/>
+        <text x="204" y="184" text-anchor="middle" font-family="Oswald,sans-serif" font-size="12" fill="#1A3A5C" font-weight="600">40мм</text>
+        <path d="M204 240 L204 265" stroke="#A8B8C8" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M200 262 L204 269 L208 262" stroke="#A8B8C8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M204 148 L204 123" stroke="#A8B8C8" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M200 126 L204 119 L208 126" stroke="#A8B8C8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+
+      <!-- CLADDING -->
+      <g id="g-clad" class="lg">
+        <rect x="225" y="30"  width="54" height="100" fill="url(#cg)"/>
+        <rect x="225" y="131" width="54" height="3"   fill="#F3F1EC" opacity="0.65"/>
+        <rect x="225" y="134" width="54" height="100" fill="url(#cg)"/>
+        <rect x="225" y="235" width="54" height="3"   fill="#F3F1EC" opacity="0.65"/>
+        <rect x="225" y="238" width="54" height="112" fill="url(#cg)"/>
+        <rect x="225" y="30"  width="14" height="320" fill="white" opacity="0.04"/>
+        <line x1="278" y1="30" x2="278" y2="350" stroke="#3A4A58" stroke-width="1.2"/>
+        <rect x="222" y="129" width="7" height="8" fill="#5A6878" rx="1"/>
+        <rect x="222" y="233" width="7" height="8" fill="#5A6878" rx="1"/>
+      </g>
+
+      <!-- LABELS -->
+      <g id="lbl-br" class="lg">
+        <line x1="115" y1="86" x2="295" y2="56" stroke="#4A5A68" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.6"/>
+        <circle cx="295" cy="56" r="2.5" fill="#4A5A68"/>
+        <text x="302" y="53" font-family="Raleway,sans-serif" font-size="11.5" fill="#2A3A48" font-weight="600">Кронштейн</text>
+        <text x="302" y="67" font-family="Raleway,sans-serif" font-size="10" fill="#7A8A9A">+ анкерный дюбель</text>
+        <text x="302" y="80" font-family="Raleway,sans-serif" font-size="10" fill="#7A8A9A">+ терм. прокладка</text>
+      </g>
+      <g id="lbl-in" class="lg">
+        <line x1="163" y1="115" x2="295" y2="120" stroke="#F0A030" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.8"/>
+        <circle cx="295" cy="120" r="2.5" fill="#F0A030"/>
+        <text x="302" y="117" font-family="Raleway,sans-serif" font-size="11.5" fill="#2A3A48" font-weight="600">Утеплитель</text>
+        <text x="302" y="131" font-family="Raleway,sans-serif" font-size="10" fill="#7A8A9A">минеральная вата</text>
+      </g>
+      <g id="lbl-me" class="lg">
+        <line x1="173" y1="168" x2="295" y2="175" stroke="#B0BCC8" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.8"/>
+        <circle cx="295" cy="175" r="2.5" fill="#B0BCC8"/>
+        <text x="302" y="172" font-family="Raleway,sans-serif" font-size="11.5" fill="#2A3A48" font-weight="600">Мембрана</text>
+        <text x="302" y="186" font-family="Raleway,sans-serif" font-size="10" fill="#7A8A9A">ветро-гидрозащитная</text>
+      </g>
+      <g id="lbl-ra" class="lg">
+        <line x1="182" y1="222" x2="295" y2="232" stroke="#6A7880" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.8"/>
+        <circle cx="295" cy="232" r="2.5" fill="#6A7880"/>
+        <text x="302" y="229" font-family="Raleway,sans-serif" font-size="11.5" fill="#2A3A48" font-weight="600">Направляющая</text>
+        <text x="302" y="243" font-family="Raleway,sans-serif" font-size="10" fill="#7A8A9A">вертикальный профиль</text>
+      </g>
+      <g id="lbl-ga" class="lg">
+        <line x1="204" y1="280" x2="295" y2="287" stroke="#A8B8C8" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.8"/>
+        <circle cx="295" cy="287" r="2.5" fill="#A8B8C8"/>
+        <text x="302" y="284" font-family="Raleway,sans-serif" font-size="11.5" fill="#2A3A48" font-weight="600">Воздушный зазор</text>
+        <text x="302" y="298" font-family="Raleway,sans-serif" font-size="10" fill="#7A8A9A">минимум 40 мм</text>
+      </g>
+      <g id="lbl-cl" class="lg">
+        <line x1="252" y1="333" x2="295" y2="338" stroke="#2A3A48" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.8"/>
+        <circle cx="295" cy="338" r="2.5" fill="#2A3A48"/>
+        <text x="302" y="335" font-family="Raleway,sans-serif" font-size="11.5" fill="#2A3A48" font-weight="600">Облицовочная панель</text>
+        <text x="302" y="349" font-family="Raleway,sans-serif" font-size="10" fill="#7A8A9A">керамогранит / АКП / камень</text>
+      </g>
+      <g id="lbl-dim" class="lg">
+        <line x1="10" y1="360" x2="278" y2="360" stroke="#1A3A5C" stroke-width="0.8" opacity="0.3"/>
+        <polygon points="10,357 10,363 5,360"    fill="#1A3A5C" opacity="0.3"/>
+        <polygon points="278,357 278,363 283,360" fill="#1A3A5C" opacity="0.3"/>
+        <text x="144" y="374" text-anchor="middle" font-family="Oswald,sans-serif" font-size="10" fill="#1A3A5C" opacity="0.4" letter-spacing="1px">ОБЩАЯ ТОЛЩИНА СИСТЕМЫ</text>
+      </g>
+    </svg>
+
+    <div class="steps">
+      <div class="dot" id="d0"></div>
+      <div class="dot" id="d1"></div>
+      <div class="dot" id="d2"></div>
+      <div class="dot" id="d3"></div>
+      <div class="dot" id="d4"></div>
+      <div class="dot" id="d5"></div>
+    </div>
+    <div class="replay-area">
+      <button id="btn" onclick="run()">↻ Повторить</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const SEQ = [
+  ['g-anchor',  300,  'layer', -1],
+  ['g-bracket', 500,  'layer',  0],
+  ['lbl-br',    900,  'label', -1],
+  ['g-insul',   1200, 'layer',  1],
+  ['lbl-in',    1600, 'label', -1],
+  ['g-mem',     2000, 'layer',  2],
+  ['lbl-me',    2400, 'label', -1],
+  ['g-rail',    2800, 'layer',  3],
+  ['lbl-ra',    3200, 'label', -1],
+  ['g-gap',     3600, 'layer',  4],
+  ['lbl-ga',    4000, 'label', -1],
+  ['g-clad',    4400, 'layer',  5],
+  ['lbl-cl',    4800, 'label', -1],
+  ['lbl-dim',   5200, 'label', -1],
+];
+let timers = [];
+function resetAll() {
+  timers.forEach(clearTimeout); timers = [];
+  document.querySelectorAll('.lg').forEach(el => {
+    el.style.transition = 'none';
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(120px)';
+  });
+  document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+  document.getElementById('btn').classList.remove('on');
+}
+function show(id, type, dot) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.transition = type === 'layer'
+    ? 'opacity 0.65s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1)'
+    : 'opacity 0.55s ease';
+  el.style.opacity = '1';
+  el.style.transform = 'translateX(0)';
+  if (dot >= 0) { const d = document.getElementById('d'+dot); if(d) d.classList.add('active'); }
+}
+function run() {
+  resetAll();
+  const t0 = setTimeout(() => {
+    SEQ.forEach(([id, delay, type, dot]) => {
+      timers.push(setTimeout(() => show(id, type, dot), delay));
+    });
+    timers.push(setTimeout(() => document.getElementById('btn').classList.add('on'), 5700));
+    timers.push(setTimeout(run, 12000));
+  }, 150);
+  timers.push(t0);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.lg').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(120px)';
+  });
+  setTimeout(run, 800);
+});
+</script>
+</body>
+</html>

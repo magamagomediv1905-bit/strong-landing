@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ООО СТРОНГ — Премиальные Фасады и Остекление (Концепт 2)</title>
+  <meta name="description" content="Монтаж навесных вентилируемых фасадов и остекление зданий с 2006 года. Интерактивный калькулятор стоимости и 3D-чертежи узлов.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style-alt.css">
+</head>
+<body>
+
+  <!-- ==========================================
+     1. FIXED NAVIGATION BAR (Glassmorphism)
+     ========================================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="#hero">
+          <span class="logo-strong">ООО СТРОНГ</span>
+          <span class="logo-sub">ФАСАДЫ И ОСТЕКЛЕНИЕ</span>
+        </a>
+      </div>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#xray" class="nav-link">Устройство</a>
+        <a href="#cladding" class="nav-link">Материалы</a>
+        <a href="#assembly" class="nav-link">3D Узел</a>
+        <a href="#calc" class="nav-link">Калькулятор</a>
+        <a href="#portfolio" class="nav-link">Портфолио</a>
+        <a href="#contacts" class="nav-link">Контакты</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#calc" class="btn-nav">Расчет сметы</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Открыть меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Sidebar -->
+  <div class="mobile-menu" id="mobile-menu-sidebar">
+    <nav class="mobile-nav">
+      <a href="#xray" class="mobile-link">Устройство</a>
+      <a href="#cladding" class="mobile-link">Материалы</a>
+      <a href="#assembly" class="mobile-link">3D Узел</a>
+      <a href="#calc" class="mobile-link">Калькулятор</a>
+      <a href="#portfolio" class="mobile-link">Портфолио</a>
+      <a href="#contacts" class="mobile-link">Контакты</a>
+      <a href="#calc" class="btn-primary mobile-btn">Рассчитать стоимость</a>
+    </nav>
+  </div>
+
+  <!-- ==========================================
+     2. HERO SECTION (Split Typography & SVG Tech Illustration)
+     ========================================== -->
+  <section class="section-hero" id="hero">
+    <div class="radial-glow glow-1"></div>
+    <div class="radial-glow glow-2"></div>
+    
+    <div class="container hero-container">
+      <div class="hero-text-side">
+        <div class="hero-tag">Concept II · Premium Architectural Bureau</div>
+        <h1 class="hero-title">
+          <span>АРХИТЕКТУРА</span>
+          <span class="highlight">НАДЕЖНЫХ</span>
+          <span>ФАСАДОВ</span>
+        </h1>
+        <p class="hero-desc">
+          Проектирование и монтаж навесных вентилируемых фасадов и премиального остекления зданий. Работаем по всей России с 2006 года.
+        </p>
+        <div class="hero-buttons">
+          <a href="#calc" class="btn-primary">Конфигуратор стоимости</a>
+          <a href="#portfolio" class="btn-secondary">Наши объекты</a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">20<span>лет</span></div>
+            <div class="stat-label">Опыта на рынке</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">150<span>+</span></div>
+            <div class="stat-label">Монтажников в штате</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">50<span>+</span></div>
+            <div class="stat-label">Крупных объектов</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-side">
+        <!-- Interactive 3D Mockup Schematic -->
+        <div class="hero-mockup-wrapper">
+          <svg class="hero-mockup" viewBox="0 0 500 500" fill="none">
+            <defs>
+              <linearGradient id="glow-line" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#C8A96E"/><stop offset="100%" stop-color="#1A3A5C"/>
+              </linearGradient>
+            </defs>
+            <!-- Iso grid lines -->
+            <path d="M50,150 L250,50 L450,150 L250,250 Z" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <path d="M50,350 L250,250 L450,350 L250,450 Z" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="50" y1="150" x2="50" y2="350" stroke="rgba(255,255,255,0.03)"/>
+            <line x1="250" y1="250" x2="250" y2="450" stroke="rgba(255,255,255,0.03)"/>
+            <line x1="450" y1="150" x2="450" y2="350" stroke="rgba(255,255,255,0.03)"/>
+
+            <!-- Main structural building slice in isometry -->
+            <!-- Wall (Back) -->
+            <polygon points="120,180 250,110 380,180 380,380 250,310 120,380" fill="rgba(26,58,92,0.1)" stroke="rgba(26,58,92,0.3)" stroke-width="1.5"/>
+            <!-- Insulation layer -->
+            <polygon points="135,188 250,125 365,188 365,365 250,302 135,365" fill="rgba(200,169,110,0.05)" stroke="rgba(200,169,110,0.2)" stroke-dasharray="3 3"/>
+            <!-- Substructure Grid -->
+            <path d="M150,195 L250,140 L350,195 M150,295 L250,240 L350,295 M150,395 L250,340 L350,395" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <line x1="180" y1="178" x2="180" y2="378" stroke="rgba(255,255,255,0.15)"/>
+            <line x1="250" y1="140" x2="250" y2="340" stroke="var(--gold)" stroke-width="1.5" opacity="0.6"/>
+            <line x1="320" y1="178" x2="320" y2="378" stroke="rgba(255,255,255,0.15)"/>
+
+            <!-- Outer Cladding Glassy Plates -->
+            <!-- Plate Left -->
+            <polygon points="160,205 240,165 240,285 160,325" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" style="backdrop-filter: blur(2px);"/>
+            <!-- Plate Right -->
+            <polygon points="260,165 340,205 340,325 260,285" fill="rgba(200,169,110,0.06)" stroke="var(--gold)" stroke-width="1.2" style="backdrop-filter: blur(2px);"/>
+            
+            <!-- Nodes with pulsing circles -->
+            <g class="hero-node" data-tooltip="Облицовочная панель (керамогранит/камень/АКП)">
+              <circle cx="300" cy="245" r="7" fill="var(--gold)" opacity="0.4" class="pulse-ring"/>
+              <circle cx="300" cy="245" r="4" fill="var(--gold)"/>
+            </g>
+            <g class="hero-node" data-tooltip="Направляющий профиль подсистемы">
+              <circle cx="250" cy="240" r="7" fill="#FFF" opacity="0.4" class="pulse-ring"/>
+              <circle cx="250" cy="240" r="4" fill="#FFF"/>
+            </g>
+            <g class="hero-node" data-tooltip="Минераловатный утеплитель">
+              <circle cx="200" cy="218" r="7" fill="var(--gold)" opacity="0.4" class="pulse-ring"/>
+              <circle cx="200" cy="218" r="4" fill="var(--gold)"/>
+            </g>
+            <g class="hero-node" data-tooltip="Несущее основание (кирпич/бетон)">
+              <circle cx="250" cy="180" r="7" fill="#1A3A5C" opacity="0.4" class="pulse-ring"/>
+              <circle cx="250" cy="180" r="4" fill="#1A3A5C"/>
+            </g>
+          </svg>
+          
+          <!-- Node Tooltip element -->
+          <div class="mockup-tooltip" id="mockup-tooltip">Наведите на точки чертежа</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+     3. X-RAY FACADE SECTION (Interactive Hotspots)
+     ========================================== -->
+  <section class="section-dark" id="xray">
+    <div class="container">
+      <div class="section-head text-center">
+        <div class="tag">Анатомия системы</div>
+        <h2>Рентген-схема <span>вентилируемого фасада</span></h2>
+        <p class="sub">Нажмите на любой интерактивный маркер, чтобы изучить строение и физику каждого слоя конструкции.</p>
+      </div>
+
+      <div class="xray-showcase">
+        <!-- Left: Huge building diagram with markers -->
+        <div class="xray-visual">
+          <div class="building-mask">
+            <!-- Isometric render mockup of building layers -->
+            <svg viewBox="0 0 600 500" fill="none" class="building-layers-svg">
+              <!-- Grid lines -->
+              <path d="M0,400 L300,250 L600,400" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+              <path d="M0,200 L300,50 L600,200" stroke="rgba(255,255,255,0.03)" stroke-width="1.5"/>
+              
+              <!-- Bottom Solid Wall Block -->
+              <polygon points="100,420 300,320 500,420 500,450 300,350 100,450" fill="#151A25" stroke="rgba(255,255,255,0.05)"/>
+              
+              <!-- Layer 1: Wall (Concrete/Brick) -->
+              <polygon points="120,380 300,290 480,380 480,180 300,90 120,180" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(255,255,255,0.08)"/>
+              <!-- Wall Texture lines -->
+              <line x1="200" y1="200" x2="200" y2="350" stroke="rgba(255,255,255,0.03)"/>
+              <line x1="400" y1="200" x2="400" y2="350" stroke="rgba(255,255,255,0.03)"/>
+
+              <!-- Layer 2: Insulation (Mineral Wool) -->
+              <polygon points="160,330 300,260 440,330 440,160 300,90 160,160" fill="rgba(200, 169, 110, 0.08)" stroke="rgba(200, 169, 110, 0.2)" stroke-width="1.2" stroke-dasharray="4 4"/>
+              
+              <!-- Layer 3: Brackets & Substructure -->
+              <path d="M190,290 L300,235 L410,290 M190,190 L300,135 L410,190" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <line x1="240" y1="165" x2="240" y2="315" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+              <line x1="360" y1="165" x2="360" y2="315" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+
+              <!-- Layer 4: Outer Cladding (Stone/Composite panels) -->
+              <!-- Panel Left Glass -->
+              <polygon points="210,270 290,230 290,140 210,180" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" style="backdrop-filter: blur(3px);"/>
+              <!-- Panel Right Glass -->
+              <polygon points="310,230 390,270 390,180 310,140" fill="rgba(200, 169, 110, 0.1)" stroke="var(--gold)" stroke-width="1.5" style="backdrop-filter: blur(3px);"/>
+            </svg>
+
+            <!-- Hotspot Overlay (Absolute Positioned HTML buttons for precision clicks) -->
+            <button class="hotspot active" style="top: 40%; left: 35%;" data-layer="wall">
+              <span class="hotspot-ring"></span>
+              <span class="hotspot-dot">1</span>
+            </button>
+            <button class="hotspot" style="top: 52%; left: 45%;" data-layer="insulation">
+              <span class="hotspot-ring"></span>
+              <span class="hotspot-dot">2</span>
+            </button>
+            <button class="hotspot" style="top: 45%; left: 63%;" data-layer="airgap">
+              <span class="hotspot-ring"></span>
+              <span class="hotspot-dot">3</span>
+            </button>
+            <button class="hotspot" style="top: 32%; left: 55%;" data-layer="substructure">
+              <span class="hotspot-ring"></span>
+              <span class="hotspot-dot">4</span>
+            </button>
+            <button class="hotspot" style="top: 25%; left: 72%;" data-layer="cladding">
+              <span class="hotspot-ring"></span>
+              <span class="hotspot-dot">5</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Glassmorphic panel displaying active details -->
+        <div class="xray-details">
+          <div class="xray-details-card glass-panel">
+            <div class="detail-layer-num" id="xray-num">01</div>
+            <h3 class="detail-layer-title" id="xray-title">Несущая стена здания</h3>
+            <p class="detail-layer-desc" id="xray-desc">
+              Железобетон, кирпич, пеноблок или монолитный каркас. Является силовым основанием для монтажа анкерных кронштейнов. Мы проводим обязательные испытания анкеров на вырыв перед началом любого проектирования.
+            </p>
+            <div class="detail-layer-specs">
+              <h4>Технические нормативы:</h4>
+              <ul id="xray-specs-list">
+                <li><span>Минимальная прочность:</span> <strong>B15 (бетон) / M100 (кирпич)</strong></li>
+                <li><span>Испытание крепежа:</span> <strong>Не менее 5 точек на фасад</strong></li>
+                <li><span>Подготовка поверхности:</span> <strong>Выравнивание штукатуркой не требуется</strong></li>
+              </ul>
+            </div>
+            <div class="xray-nav-buttons">
+              <button class="xray-prev btn-icon">←</button>
+              <span class="xray-indicator">1 / 5</span>
+              <button class="xray-next btn-icon">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+     4. CINEMATIC HORIZONTAL CAROUSEL (Cladding)
+     ========================================= -->
+  <section class="section-dark cladding-slider-section" id="cladding">
+    <div class="container">
+      <div class="section-head flex-head">
+        <div>
+          <div class="tag">Материалы</div>
+          <h2>Виды <span>облицовки</span></h2>
+          <p class="sub">Изучите доступные текстуры, форматы и характеристики фасадных панелей премиум-класса.</p>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-arrow prev" id="slide-prev" aria-label="Предыдущий слайд">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="slider-arrow next" id="slide-next" aria-label="Следующий слайд">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cinematic Slider Track Wrapper (Overflow hidden, full width) -->
+    <div class="cladding-slider-outer">
+      <div class="cladding-slider-track" id="slider-track">
+        
+        <!-- Slide 1: Керамогранит -->
+        <div class="cladding-slide active">
+          <div class="slide-background-text">KG</div>
+          <div class="slide-grid">
+            <div class="slide-visual">
+              <div class="slide-image-card">
+                <svg viewBox="0 0 400 280" fill="none">
+                  <defs>
+                    <linearGradient id="g-kg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C8B89A"/><stop offset="100%" stop-color="#807060"/></linearGradient>
+                    <pattern id="g-kgtex" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+                      <line x1="0" y1="4" x2="4" y2="0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="280" rx="4" fill="#151A25" stroke="rgba(255,255,255,0.05)"/>
+                  <rect x="30" y="30" width="160" height="100" rx="2" fill="url(#g-kg1)"/>
+                  <rect x="30" y="30" width="160" height="100" rx="2" fill="url(#g-kgtex)"/>
+                  <rect x="210" y="30" width="160" height="100" rx="2" fill="url(#g-kg1)" opacity="0.8"/>
+                  <rect x="210" y="30" width="160" height="100" rx="2" fill="url(#g-kgtex)"/>
+                  <rect x="30" y="150" width="160" height="100" rx="2" fill="url(#g-kg1)" opacity="0.8"/>
+                  <rect x="30" y="150" width="160" height="100" rx="2" fill="url(#g-kgtex)"/>
+                  <rect x="210" y="150" width="160" height="100" rx="2" fill="url(#g-kg1)"/>
+                  <rect x="210" y="150" width="160" height="100" rx="2" fill="url(#g-kgtex)"/>
+                  <line x1="30" y1="140" x2="370" y2="140" stroke="#151A25" stroke-width="10"/>
+                  <line x1="200" y1="30" x2="200" y2="250" stroke="#151A25" stroke-width="10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-num">01 / 06</div>
+              <h3 class="slide-title">Керамогранитные плиты</h3>
+              <p class="slide-desc">Абсолютный фаворит для коммерческих и жилых комплексов. Имеет нулевое водопоглощение, высокую стойкость к ультрафиолету и химическому воздействию городской среды.</p>
+              <div class="slide-specs">
+                <div class="slide-spec-item"><span>Срок службы</span><strong>50+ лет</strong></div>
+                <div class="slide-spec-item"><span>Горючесть</span><strong>НГ (Негорючий)</strong></div>
+                <div class="slide-spec-item"><span>Крепление</span><strong>Кляммеры (видимый шов)</strong></div>
+              </div>
+              <div class="slide-badge">Рекомендуется для ЖК бизнес-класса</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Композит АКП -->
+        <div class="cladding-slide">
+          <div class="slide-background-text">ACP</div>
+          <div class="slide-grid">
+            <div class="slide-visual">
+              <div class="slide-image-card">
+                <svg viewBox="0 0 400 280" fill="none">
+                  <defs>
+                    <linearGradient id="g-akp1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3A4A5C"/><stop offset="100%" stop-color="#223040"/></linearGradient>
+                    <linearGradient id="g-akp2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#C8A96E"/><stop offset="100%" stop-color="#9E7E45"/></linearGradient>
+                  </defs>
+                  <rect width="400" height="280" rx="4" fill="#151A25" stroke="rgba(255,255,255,0.05)"/>
+                  <rect x="30" y="30" width="220" height="100" rx="2" fill="url(#g-akp1)"/>
+                  <rect x="260" y="30" width="110" height="100" rx="2" fill="url(#g-akp2)"/>
+                  <rect x="30" y="140" width="110" height="110" rx="2" fill="url(#g-akp2)"/>
+                  <rect x="150" y="140" width="220" height="110" rx="2" fill="url(#g-akp1)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-num">02 / 06</div>
+              <h3 class="slide-title">Алюминиевый композит (АКП)</h3>
+              <p class="slide-desc">Легкие трехслойные панели с алюминиевыми листами и полимерным сердечником. Удобны для радиусных колонн, козырьков и сложных геометрических переломов.</p>
+              <div class="slide-specs">
+                <div class="slide-spec-item"><span>Толщина</span><strong>4 мм (Al 0.5 мм)</strong></div>
+                <div class="slide-spec-item"><span>Горючесть</span><strong>Г1 (слабогорючий)</strong></div>
+                <div class="slide-spec-item"><span>Вес</span><strong>до 7.5 кг/м²</strong></div>
+              </div>
+              <div class="slide-badge">Рекомендуется для ТРЦ и автосалонов</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Натуральный камень -->
+        <div class="cladding-slide">
+          <div class="slide-background-text">ST</div>
+          <div class="slide-grid">
+            <div class="slide-visual">
+              <div class="slide-image-card">
+                <svg viewBox="0 0 400 280" fill="none">
+                  <defs>
+                    <linearGradient id="g-stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8A7A6A"/><stop offset="100%" stop-color="#55483B"/></linearGradient>
+                  </defs>
+                  <rect width="400" height="280" rx="4" fill="#151A25" stroke="rgba(255,255,255,0.05)"/>
+                  <rect x="30" y="30" width="200" height="140" rx="2" fill="url(#g-stone)" opacity="0.95"/>
+                  <rect x="240" y="30" width="130" height="140" rx="2" fill="url(#g-stone)" opacity="0.8"/>
+                  <rect x="30" y="180" width="130" height="70" rx="2" fill="url(#g-stone)" opacity="0.8"/>
+                  <rect x="170" y="180" width="200" height="70" rx="2" fill="url(#g-stone)" opacity="0.95"/>
+                  <line x1="30" y1="175" x2="370" y2="175" stroke="#151A25" stroke-width="10"/>
+                  <line x1="235" y1="30" x2="235" y2="250" stroke="#151A25" stroke-width="10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-num">03 / 06</div>
+              <h3 class="slide-title">Натуральный камень</h3>
+              <p class="slide-desc">Гранит, травертин, известняк или мрамор. Монументальный премиальный облик, подчеркивающий исключительный статус и капитальность строения.</p>
+              <div class="slide-specs">
+                <div class="slide-spec-item"><span>Толщина</span><strong>20 - 40 мм</strong></div>
+                <div class="slide-spec-item"><span>Крепление</span><strong>Штифтовое / Скрытое Keil</strong></div>
+                <div class="slide-spec-item"><span>Срок службы</span><strong>100+ лет</strong></div>
+              </div>
+              <div class="slide-badge">Рекомендуется для элитных клубных домов</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Металлокассеты -->
+        <div class="cladding-slide">
+          <div class="slide-background-text">MC</div>
+          <div class="slide-grid">
+            <div class="slide-visual">
+              <div class="slide-image-card">
+                <svg viewBox="0 0 400 280" fill="none">
+                  <defs>
+                    <linearGradient id="g-mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4A5A75"/><stop offset="100%" stop-color="#2A354A"/></linearGradient>
+                  </defs>
+                  <rect width="400" height="280" rx="4" fill="#151A25" stroke="rgba(255,255,255,0.05)"/>
+                  <rect x="30" y="30" width="100" height="100" rx="3" fill="url(#g-mk)"/>
+                  <rect x="140" y="30" width="100" height="100" rx="3" fill="url(#g-mk)"/>
+                  <rect x="250" y="30" width="120" height="100" rx="3" fill="url(#g-mk)"/>
+                  <rect x="30" y="140" width="100" height="110" rx="3" fill="url(#g-mk)"/>
+                  <rect x="140" y="140" width="100" height="110" rx="3" fill="url(#g-mk)"/>
+                  <rect x="250" y="140" width="120" height="110" rx="3" fill="url(#g-mk)"/>
+                  <line x1="30" y1="135" x2="370" y2="135" stroke="#151A25" stroke-width="10"/>
+                  <line x1="135" y1="30" x2="135" y2="250" stroke="#151A25" stroke-width="10"/>
+                  <line x1="245" y1="30" x2="245" y2="250" stroke="#151A25" stroke-width="10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-num">04 / 06</div>
+              <h3 class="slide-title">Металлические кассеты</h3>
+              <p class="slide-desc">Изготавливаются из оцинкованной стали или алюминия с защитным покрытием PVDF. Характеризуются идеальной геометрией стыков и скоростным всесезонным монтажом.</p>
+              <div class="slide-specs">
+                <div class="slide-spec-item"><span>Толщина</span><strong>0.7 - 1.2 мм (сталь)</strong></div>
+                <div class="slide-spec-item"><span>Покрытие</span><strong>Пурал / PVDF / порошок</strong></div>
+                <div class="slide-spec-item"><span>Замок</span><strong>Закрытый (скрытый крепеж)</strong></div>
+              </div>
+              <div class="slide-badge">Рекомендуется для бизнес-центров и технопарков</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Фиброцемент -->
+        <div class="cladding-slide">
+          <div class="slide-background-text">FC</div>
+          <div class="slide-grid">
+            <div class="slide-visual">
+              <div class="slide-image-card">
+                <svg viewBox="0 0 400 280" fill="none">
+                  <defs>
+                    <linearGradient id="g-fc" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C8C0B0"/><stop offset="100%" stop-color="#90887A"/></linearGradient>
+                  </defs>
+                  <rect width="400" height="280" rx="4" fill="#151A25" stroke="rgba(255,255,255,0.05)"/>
+                  <rect x="30" y="30" width="340" height="40" rx="1" fill="url(#g-fc)"/>
+                  <rect x="30" y="75" width="340" height="40" rx="1" fill="url(#g-fc)" opacity="0.9"/>
+                  <rect x="30" y="120" width="340" height="40" rx="1" fill="url(#g-fc)"/>
+                  <rect x="30" y="165" width="340" height="40" rx="1" fill="url(#g-fc)" opacity="0.9"/>
+                  <rect x="30" y="210" width="340" height="40" rx="1" fill="url(#g-fc)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-num">05 / 06</div>
+              <h3 class="slide-title">Фиброцементные плиты</h3>
+              <p class="slide-desc">Прессы из смеси цемента, минеральных наполнителей и фиброволокон. Чистый экологичный материал, сертифицированный для детских, медицинских и учебных учреждений.</p>
+              <div class="slide-specs">
+                <div class="slide-spec-item"><span>Экологичность</span><strong>100% безопасен</strong></div>
+                <div class="slide-spec-item"><span>Текстуры</span><strong>Камень, дерево, бетон</strong></div>
+                <div class="slide-spec-item"><span>Класс горючести</span><strong>НГ (Абсолютно негорючий)</strong></div>
+              </div>
+              <div class="slide-badge">Рекомендуется для детских садов, школ и поликлиник</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Металлосайдинг -->
+        <div class="cladding-slide">
+          <div class="slide-background-text">MS</div>
+          <div class="slide-grid">
+            <div class="slide-visual">
+              <div class="slide-image-card">
+                <svg viewBox="0 0 400 280" fill="none">
+                  <defs>
+                    <linearGradient id="g-ms" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4A7A5A"/><stop offset="100%" stop-color="#23452E"/></linearGradient>
+                  </defs>
+                  <rect width="400" height="280" rx="4" fill="#151A25" stroke="rgba(255,255,255,0.05)"/>
+                  <path d="M30,30 L370,30 L370,250 L30,250 Z" fill="url(#g-ms)"/>
+                  <path d="M30,70 L370,70 M30,110 L370,110 M30,150 L370,150 M30,190 L370,190 M30,230 L370,230" stroke="#151A25" stroke-width="5"/>
+                </svg>
+              </div>
+            </div>
+            <div class="slide-content">
+              <div class="slide-num">06 / 06</div>
+              <h3 class="slide-title">Металлосайдинг и профлист</h3>
+              <p class="slide-desc">Профилированные панели из оцинкованной стали. Самый экономичный и высокоскоростной способ обшивки наружных конструкций промышленных корпусов.</p>
+              <div class="slide-specs">
+                <div class="slide-spec-item"><span>Монтаж</span><strong>Простой, сверхбыстрый</strong></div>
+                <div class="slide-spec-item"><span>Стоимость</span><strong>Наиболее экономичное</strong></div>
+                <div class="slide-spec-item"><span>Применение</span><strong>Склады, ангары, заводы</strong></div>
+              </div>
+              <div class="slide-badge">Рекомендуется для производственных цехов</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+     5. 3D ASSEMBLY NODE SECTION (Exploded Detail)
+     ========================================== -->
+  <section class="section-dark" id="assembly">
+    <div class="container">
+      <div class="assembly-layout">
+        
+        <!-- Left: Interactive Exploded Bracket Visual -->
+        <div class="assembly-visual-side">
+          <div class="assembly-scene" id="node-3d-scene">
+            <!-- Isometric Bracket elements -->
+            <div class="bracket-node-wrap">
+              
+              <!-- Layer 1: Concrete wall backer -->
+              <div class="b-layer b-wall active" id="bl-0" style="transform: translateZ(0px);">
+                <div class="b-layer-title">Основание стены (Бетон)</div>
+              </div>
+              
+              <!-- Layer 2: Thermal isolation pad -->
+              <div class="b-layer b-pad" id="bl-1" style="transform: translateZ(0px);">
+                <div class="b-layer-title">Паронитовая прокладка</div>
+              </div>
+              
+              <!-- Layer 3: Steel/Alu Bracket -->
+              <div class="b-layer b-bracket" id="bl-2" style="transform: translateZ(0px);">
+                <div class="b-layer-title">Силовой кронштейн</div>
+              </div>
+              
+              <!-- Layer 4: Insulation mineral wool -->
+              <div class="b-layer b-insul" id="bl-3" style="transform: translateZ(0px);">
+                <div class="b-layer-title">Плита утеплителя</div>
+              </div>
+
+              <!-- Layer 5: Vertical Guide Profile -->
+              <div class="b-layer b-profile" id="bl-4" style="transform: translateZ(0px);">
+                <div class="b-layer-title">Направляющий профиль</div>
+              </div>
+
+              <!-- Layer 6: Cladding panel -->
+              <div class="b-layer b-panel" id="bl-5" style="transform: translateZ(0px);">
+                <div class="b-layer-title">Облицовочная кассета</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Controls under the node -->
+          <div class="node-controls">
+            <button class="btn-node-ctrl active" id="btn-node-exp">ВЗРЫВ-СХЕМА</button>
+            <button class="btn-node-ctrl" id="btn-node-asm">СОБРАТЬ УЗЕЛ</button>
+            <button class="btn-node-ctrl" id="btn-node-reset">СБРОСИТЬ</button>
+          </div>
+        </div>
+
+        <!-- Right: Stepper steps description -->
+        <div class="assembly-steps-side">
+          <div class="tag">Конструктивный узел</div>
+          <h2>3D Детализация <span>крепления кронштейна</span></h2>
+          <p class="sub">Вентилируемый фасад собирается последовательно. Переключайте схему слева, чтобы детально проследить процесс сборки узла примыкания.</p>
+          
+          <div class="node-steps-list">
+            
+            <div class="node-step active" data-step="0">
+              <span class="step-num-circle">1</span>
+              <div>
+                <h5>Основание (Стена)</h5>
+                <p>Несущая стена, воспринимающая ветровые и статические нагрузки от фасадной системы.</p>
+              </div>
+            </div>
+
+            <div class="node-step" data-step="1">
+              <span class="step-num-circle">2</span>
+              <div>
+                <h5>Термоизоляционная прокладка</h5>
+                <p>Паронитовая или пластиковая прокладка. Исключает прямой контакт металла со стеной, ликвидируя мостик холода.</p>
+              </div>
+            </div>
+
+            <div class="node-step" data-step="2">
+              <span class="step-num-circle">3</span>
+              <div>
+                <h5>Силовой кронштейн L-типа</h5>
+                <p>Оцинкованный или алюминиевый элемент. Крепится анкерным дюбелем, компенсирует неровности стен.</p>
+              </div>
+            </div>
+
+            <div class="node-step" data-step="3">
+              <span class="step-num-circle">4</span>
+              <div>
+                <h5>Минераловатный утеплитель</h5>
+                <p>Плиты утеплителя высокой плотности, уложенные внахлест. Крепятся тарельчатыми дюбелями.</p>
+              </div>
+            </div>
+
+            <div class="node-step" data-step="4">
+              <span class="step-num-circle">5</span>
+              <div>
+                <h5>Направляющий Т/L-профиль</h5>
+                <p>Вертикальная рейка, формирующая вентилируемый зазор и служащая базой для облицовки.</p>
+              </div>
+            </div>
+
+            <div class="node-step" data-step="5">
+              <span class="step-num-circle">6</span>
+              <div>
+                <h5>Внешняя облицовка</h5>
+                <p>Внешние кассеты или плиты. Защищают систему от дождя и ультрафиолета.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+     6. INTERACTIVE COST CALCULATOR SECTION
+     ========================================== -->
+  <section class="section-dark calc-section" id="calc">
+    <div class="radial-glow glow-calc"></div>
+    <div class="container">
+      <div class="section-head text-center">
+        <div class="tag">Бюджет фасадных работ</div>
+        <h2>Онлайн-конфигуратор <span>сметной стоимости</span></h2>
+        <p class="sub">Выберите параметры ниже для автоматического расчета предварительного бюджета на проектирование и монтаж.</p>
+      </div>
+
+      <div class="calc-grid">
+        <!-- Left Column: Input controls -->
+        <div class="calc-inputs-col glass-panel">
+          
+          <!-- Control 1: Area Slider -->
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="calc-area-range">Площадь фасада (м²)</label>
+              <span class="calc-val-badge"><span id="calc-area-val">1500</span> м²</span>
+            </div>
+            <input type="range" id="calc-area-range" min="100" max="10000" step="50" value="1500" class="calc-slider">
+            <div class="slider-ticks">
+              <span>100 м²</span>
+              <span>5 000 м²</span>
+              <span>10 000 м²</span>
+            </div>
+          </div>
+
+          <!-- Control 2: Cladding selector -->
+          <div class="calc-group">
+            <label>Тип облицовки</label>
+            <div class="calc-select-grid" id="calc-cladding-select">
+              <div class="calc-option active" data-price="4200" data-value="kg">
+                <span>Керамогранит</span>
+                <small>от 4 200 ₽/м²</small>
+              </div>
+              <div class="calc-option" data-price="3800" data-value="composite">
+                <span>Алюм. композит</span>
+                <small>от 3 800 ₽/м²</small>
+              </div>
+              <div class="calc-option" data-price="9500" data-value="stone">
+                <span>Нат. камень</span>
+                <small>от 9 500 ₽/м²</small>
+              </div>
+              <div class="calc-option" data-price="4800" data-value="metal">
+                <span>Металлокассеты</span>
+                <small>от 4 800 ₽/м²</small>
+              </div>
+              <div class="calc-option" data-price="3900" data-value="fibrocement">
+                <span>Фиброцемент</span>
+                <small>от 3 900 ₽/м²</small>
+              </div>
+              <div class="calc-option" data-price="2500" data-value="siding">
+                <span>Металлосайдинг</span>
+                <small>от 2 500 ₽/м²</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Control 3: Substructure Selector -->
+          <div class="calc-group">
+            <label for="calc-sub-select">Материал подконструкции</label>
+            <div class="calc-pills-row" id="calc-sub-select">
+              <div class="calc-pill active" data-multiplier="1.0" data-value="steel">
+                <span>Оцинкованная сталь</span>
+                <small>Стандартная надежность</small>
+              </div>
+              <div class="calc-pill" data-multiplier="1.25" data-value="aluminum">
+                <span>Алюминий</span>
+                <small>Легкость и долговечность</small>
+              </div>
+              <div class="calc-pill" data-multiplier="1.6" data-value="stainless">
+                <span>Нержавеющая сталь</span>
+                <small>Максимальный срок службы</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Control 4: Windows slider -->
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="calc-windows-range">Количество оконных проемов</label>
+              <span class="calc-val-badge"><span id="calc-windows-val">60</span> шт</span>
+            </div>
+            <input type="range" id="calc-windows-range" min="0" max="400" step="5" value="60" class="calc-slider">
+          </div>
+
+        </div>
+
+        <!-- Right Column: Live Cost Display & Call-to-action -->
+        <div class="calc-results-col glass-panel">
+          <div class="results-badge">Сводная смета (ориентировочно)</div>
+          
+          <div class="calc-result-row">
+            <span>Проектирование и геодезия:</span>
+            <strong id="price-design">675 000 ₽</strong>
+          </div>
+          
+          <div class="calc-result-row">
+            <span>Фасадные материалы под ключ:</span>
+            <strong id="price-materials">6 300 000 ₽</strong>
+          </div>
+
+          <div class="calc-result-row">
+            <span>Строительно-монтажные работы:</span>
+            <strong id="price-work">3 600 000 ₽</strong>
+          </div>
+
+          <div class="results-divider"></div>
+
+          <div class="calc-total-box">
+            <div class="total-label">Итоговый ориентировочный бюджет:</div>
+            <div class="total-price" id="price-total">10 575 000 ₽</div>
+            <div class="total-note">*Включает проект, геодезию, материалы, леса и монтаж</div>
+          </div>
+
+          <!-- CTA inside calculator -->
+          <div class="calc-cta-wrap">
+            <p>Хотите получить детализированную смету в формате PDF по ГОСТ с учетом высотности и удаленности объекта?</p>
+            <a href="#contacts" class="btn-primary calc-submit-btn">Получить подробную смету</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+     7. CINEMATIC PORTFOLIO SECTION
+     ========================================== -->
+  <section class="section-dark" id="portfolio">
+    <div class="container">
+      <div class="section-head flex-head">
+        <div>
+          <div class="tag">Портфолио</div>
+          <h2>Наши <span>реализованные объекты</span></h2>
+          <p class="sub">Примеры облицованных зданий, демонстрирующие высший стандарт качества монтажных работ.</p>
+        </div>
+        <div class="portfolio-tabs">
+          <button class="p-tab active" data-filter="all">Все</button>
+          <button class="p-tab" data-filter="done">Завершенные</button>
+          <button class="p-tab" data-filter="working">В работе</button>
+        </div>
+      </div>
+
+      <div class="portfolio-cinematic-grid">
+        
+        <!-- Case 1 -->
+        <div class="portfolio-card done" style="background-image: url('кейс-яковлево.jpeg');">
+          <div class="p-card-overlay">
+            <div class="p-card-header">
+              <span class="p-card-badge">Завершен</span>
+              <span class="p-card-area">2 400 м²</span>
+            </div>
+            <div class="p-card-body">
+              <h4>Бизнес-центр в Яковлево</h4>
+              <p>Облицовка фасада японскими фиброцементными плитами и вентилируемым алюминиевым композитом.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="portfolio-card done" style="background-image: url('кейс-хотьково.jpeg');">
+          <div class="p-card-overlay">
+            <div class="p-card-header">
+              <span class="p-card-badge">Завершен</span>
+              <span class="p-card-area">1 850 м²</span>
+            </div>
+            <div class="p-card-body">
+              <h4>Производственный комплекс, Хотьково</h4>
+              <p>Монтаж несущей оцинкованной подсистемы и энергоэффективного металлосайдинга.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="portfolio-card working" style="background-image: url('кейс-александров.jpeg');">
+          <div class="p-card-overlay">
+            <div class="p-card-header">
+              <span class="p-card-badge working-badge">В работе</span>
+              <span class="p-card-area">4 200 м²</span>
+            </div>
+            <div class="p-card-body">
+              <h4>Жилой комплекс в Александрове</h4>
+              <p>Текущий монтаж фасадного каркаса и облицовка широкоформатным керамогранитом.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+     8. CONTACTS & CALL BACK (Minimalist floating labels)
+     ========================================== -->
+  <section class="section-dark contacts-section" id="contacts">
+    <div class="container">
+      <div class="contacts-grid">
+        
+        <!-- Info Column -->
+        <div class="contacts-info-side">
+          <div class="tag">Связаться с нами</div>
+          <h2>Обсудим <span>ваш объект?</span></h2>
+          <p class="contacts-lead">
+            Пришлите проект фасада или техническое задание. Мы проведем бесплатный экспресс-анализ чертежей, подготовим расчет сметы и ответим на все технические вопросы.
+          </p>
+
+          <div class="info-blocks">
+            
+            <div class="info-block-item">
+              <div class="info-icon">📞</div>
+              <div>
+                <h5>Телефон инженерного отдела</h5>
+                <a href="tel:+74950000000" class="info-link">+7 (495) 000-00-00</a>
+              </div>
+            </div>
+
+            <div class="info-block-item">
+              <div class="info-icon">✉️</div>
+              <div>
+                <h5>Электронная почта</h5>
+                <a href="mailto:info@strong-fasad.ru" class="info-link">info@strong-fasad.ru</a>
+              </div>
+            </div>
+
+            <div class="info-block-item">
+              <div class="info-icon">📍</div>
+              <div>
+                <h5>Офис и производство</h5>
+                <p class="info-text">г. Москва, ул. Архитектора Власова, д. 20, офис 402</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="contacts-form-side">
+          <div class="glass-panel form-card">
+            <h4>Отправить техническое задание</h4>
+            <p class="form-card-sub">Мы свяжемся с вами в течение 30 минут с готовыми техническими рекомендациями.</p>
+            
+            <form class="alt-contact-form" id="alt-form">
+              <div class="form-row-2">
+                <div class="input-group">
+                  <input type="text" id="form-name" required placeholder=" ">
+                  <label for="form-name">Ваше имя</label>
+                </div>
+                <div class="input-group">
+                  <input type="tel" id="form-phone" required placeholder=" ">
+                  <label for="form-phone">Контактный телефон</label>
+                </div>
+              </div>
+              
+              <div class="input-group">
+                <input type="email" id="form-email" placeholder=" ">
+                <label for="form-email">Электронная почта</label>
+              </div>
+
+              <div class="input-group">
+                <textarea id="form-message" rows="4" placeholder=" "></textarea>
+                <label for="form-message">Опишите ваш объект (площадь, этажность, материал стен)</label>
+              </div>
+
+              <div class="form-consent">
+                <input type="checkbox" id="form-consent-check" checked required>
+                <label for="form-consent-check">Согласен на обработку персональных данных в соответствии с политикой конфиденциальности.</label>
+              </div>
+
+              <button type="submit" class="btn-primary form-submit-btn">Отправить ТЗ и получить расчет</button>
+            </form>
+
+            <div class="success-message" id="form-success">
+              <div class="success-icon">✓</div>
+              <h5>Заявка успешно отправлена!</h5>
+              <p>Инженер свяжется с вами в ближайшее время по указанному телефону.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+     9. FOOTER
+     ========================================== -->
+  <footer class="alt-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="brand-name">ООО СТРОНГ</span>
+        <p class="brand-copy">Проектирование и монтаж навесных вентилируемых фасадов и премиального остекления. На рынке с 2006 года.</p>
+        <span class="copyright-text">© 2006–2026 ООО «СТРОНГ». Все права защищены.</span>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Навигация</h5>
+        <a href="#hero">Главная</a>
+        <a href="#xray">Анатомия фасада</a>
+        <a href="#cladding">Виды облицовки</a>
+        <a href="#calc">Калькулятор стоимости</a>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Документы</h5>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Карта сайта</a>
+        <a href="#">Реквизиты компании</a>
+        <a href="#">Сертификаты и СРО</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script-alt.js"></script>
+</body>
+</html>
