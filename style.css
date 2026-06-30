@@ -1635,6 +1635,10 @@ svg#d {
   display: inline-block;
 }
 
+.case-status.completed span {
+  background-color: var(--gold);
+}
+
 .case-body {
   padding: 24px;
 }
