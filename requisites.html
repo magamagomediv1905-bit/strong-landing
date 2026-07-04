@@ -108,7 +108,7 @@
       width: 100%;
       max-width: 840px;
       background: var(--white);
-      padding: 60px 50px;
+      padding: 35px 40px;
       border-radius: 6px;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
@@ -134,8 +134,8 @@
       justify-content: space-between;
       align-items: flex-start;
       border-bottom: 2px solid var(--accent);
-      padding-bottom: 30px;
-      margin-bottom: 40px;
+      padding-bottom: 18px;
+      margin-bottom: 25px;
       position: relative;
       z-index: 2;
     }
@@ -147,11 +147,11 @@
     }
 
     .logo-icon {
-      font-size: 32px;
+      font-size: 28px;
       color: var(--primary);
       font-weight: 700;
       border: 2px solid var(--primary);
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 4px;
       letter-spacing: -1px;
     }
@@ -163,7 +163,7 @@
 
     .logo-title {
       font-family: 'Oswald', sans-serif;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--primary);
       line-height: 1.1;
@@ -174,7 +174,7 @@
     }
 
     .logo-sub {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -183,13 +183,13 @@
 
     .header-contacts {
       text-align: right;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
       font-family: 'Raleway', sans-serif;
     }
 
     .header-contacts p {
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
     .header-contacts a {
@@ -199,7 +199,7 @@
     }
 
     .card-title-block {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       text-align: center;
       position: relative;
       z-index: 2;
@@ -207,13 +207,13 @@
 
     .card-title-block h1 {
       font-family: 'Oswald', sans-serif;
-      font-size: 24px;
+      font-size: 20px;
       color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       display: inline-block;
       position: relative;
-      padding-bottom: 8px;
+      padding-bottom: 6px;
     }
 
     .card-title-block h1::after {
@@ -229,14 +229,14 @@
     /* Sections styling */
     .section-title {
       font-family: 'Oswald', sans-serif;
-      font-size: 16px;
+      font-size: 14px;
       color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-top: 35px;
-      margin-bottom: 15px;
+      margin-top: 20px;
+      margin-bottom: 10px;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 5px;
+      padding-bottom: 4px;
       position: relative;
       z-index: 2;
     }
@@ -268,9 +268,9 @@
 
     .label-col {
       width: 250px;
-      padding: 14px 20px;
+      padding: 9px 18px;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--primary);
       background-color: rgba(26, 58, 92, 0.02);
       border-right: 1px solid var(--border);
@@ -280,8 +280,8 @@
 
     .value-col {
       flex: 1;
-      padding: 14px 20px;
-      font-size: 13px;
+      padding: 9px 18px;
+      font-size: 12.5px;
       color: #333333;
       display: flex;
       align-items: center;
@@ -308,20 +308,20 @@
     }
 
     .copy-btn svg {
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       fill: currentColor;
     }
 
     /* Signature footer */
     .signature-area {
-      margin-top: 50px;
+      margin-top: 30px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       position: relative;
       z-index: 2;
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
     .signature-line {
@@ -334,14 +334,14 @@
     }
 
     .stamp-placeholder {
-      width: 100px;
-      height: 100px;
+      width: 85px;
+      height: 85px;
       border: 1px dashed var(--accent);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 10px;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -377,7 +377,8 @@
     @media print {
       body {
         background-color: var(--white) !important;
-        padding: 0;
+        padding: 0 !important;
+        margin: 0 !important;
       }
       .actions-bar {
         display: none !important;
@@ -385,7 +386,8 @@
       .card-container {
         border: none !important;
         box-shadow: none !important;
-        padding: 0 !important;
+        padding: 0px !important;
+        margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
       }
@@ -397,6 +399,8 @@
       }
       .row {
         background-color: var(--white) !important;
+        border-bottom: 1px solid #000000 !important;
+        page-break-inside: avoid !important;
       }
       .row:nth-child(even) {
         background-color: var(--white) !important;
@@ -404,18 +408,44 @@
       .label-col {
         background-color: var(--white) !important;
         border-right: 1px solid #000000 !important;
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+      }
+      .value-col {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
       }
       .grid-table {
         border: 1px solid #000000 !important;
       }
-      .row {
-        border-bottom: 1px solid #000000 !important;
-      }
       .section-title {
         border-bottom: 1px solid #000000 !important;
+        margin-top: 15px !important;
+        margin-bottom: 6px !important;
+        font-size: 13px !important;
       }
       .card-header {
         border-bottom: 2px solid #000000 !important;
+        margin-bottom: 15px !important;
+        padding-bottom: 10px !important;
+      }
+      .logo-title {
+        font-size: 20px !important;
+      }
+      .card-title-block {
+        margin-bottom: 15px !important;
+      }
+      .card-title-block h1 {
+        font-size: 18px !important;
+      }
+      .signature-area {
+        margin-top: 25px !important;
+        page-break-inside: avoid !important;
+      }
+      .stamp-placeholder {
+        width: 80px !important;
+        height: 80px !important;
+        font-size: 9px !important;
       }
     }
 
@@ -424,7 +454,7 @@
         padding: 20px 10px;
       }
       .card-container {
-        padding: 30px 20px;
+        padding: 25px 15px;
       }
       .row {
         flex-direction: column;
@@ -433,15 +463,15 @@
         width: 100%;
         border-right: none;
         border-bottom: 1px solid var(--border);
-        padding: 10px 15px;
+        padding: 8px 12px;
       }
       .value-col {
-        padding: 10px 15px;
+        padding: 8px 12px;
       }
       .signature-area {
         flex-direction: column;
         align-items: center;
-        gap: 30px;
+        gap: 25px;
         text-align: center;
       }
       .stamp-placeholder {
@@ -455,9 +485,10 @@
   <!-- Actions Bar -->
   <div class="actions-bar">
     <a href="index.html" class="btn btn-outline">← На главную</a>
-    <div style="display: flex; gap: 10px;">
+    <div style="display: flex; gap: 10px; align-items: center;">
       <button class="btn btn-accent" id="copy-all-btn">Скопировать всё</button>
-      <button class="btn btn-primary" onclick="window.print()">Печать / Сохранить в PDF</button>
+      <a href="requisites.pdf" download class="btn btn-primary" style="background-color: #C82A2A; border-color: #C82A2A; color: #ffffff;">Скачать PDF</a>
+      <button class="btn btn-outline" onclick="window.print()">Печать</button>
     </div>
   </div>
 
