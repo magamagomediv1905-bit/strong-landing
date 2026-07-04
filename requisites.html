@@ -242,24 +242,23 @@
     }
 
     .grid-table {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
+      width: 100% !important;
+      border-collapse: collapse !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 4px !important;
+      overflow: hidden !important;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
       position: relative;
       z-index: 2;
+      margin-bottom: 20px;
     }
 
     .row {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-      background-color: var(--white);
+      border-bottom: 1px solid var(--border) !important;
     }
 
     .row:last-child {
-      border-bottom: none;
+      border-bottom: none !important;
     }
 
     .row:nth-child(even) {
@@ -267,26 +266,32 @@
     }
 
     .label-col {
-      width: 250px;
+      width: 30%;
       padding: 9px 18px;
       font-weight: 600;
       font-size: 12.5px;
       color: var(--primary);
       background-color: rgba(26, 58, 92, 0.02);
-      border-right: 1px solid var(--border);
-      display: flex;
-      align-items: center;
+      border-right: 1px solid var(--border) !important;
+      vertical-align: middle;
+      text-align: left;
     }
 
     .value-col {
-      flex: 1;
+      width: 70%;
       padding: 9px 18px;
       font-size: 12.5px;
       color: #333333;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+      vertical-align: middle;
+      text-align: left;
+    }
+
+    .value-col-content {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 15px !important;
+      width: 100% !important;
     }
 
     .copy-btn {
@@ -384,6 +389,10 @@
         padding: 0 !important;
         margin: 0 !important;
       }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
       .actions-bar {
         display: none !important;
       }
@@ -401,36 +410,38 @@
       .copy-btn {
         display: none !important;
       }
+      .grid-table {
+        border: 1px solid #1A3A5C !important;
+        border-collapse: collapse !important;
+        margin-bottom: 12px !important;
+        page-break-inside: avoid !important;
+      }
       .row {
-        background-color: var(--white) !important;
-        border-bottom: 1px solid #000000 !important;
+        border-bottom: 1px solid #1A3A5C !important;
         page-break-inside: avoid !important;
       }
       .row:nth-child(even) {
-        background-color: var(--white) !important;
+        background-color: rgba(26, 58, 92, 0.01) !important;
       }
       .label-col {
-        background-color: var(--white) !important;
-        border-right: 1px solid #000000 !important;
-        padding: 4px 8px !important;
+        background-color: rgba(26, 58, 92, 0.02) !important;
+        border-right: 1px solid #1A3A5C !important;
+        padding: 4px 10px !important;
         font-size: 10.5px !important;
         width: 170px !important;
       }
       .value-col {
-        padding: 4px 8px !important;
+        padding: 4px 10px !important;
         font-size: 10.5px !important;
       }
-      .grid-table {
-        border: 1px solid #000000 !important;
-      }
       .section-title {
-        border-bottom: 1px solid #000000 !important;
+        border-bottom: 1px solid #C8A96E !important;
         margin-top: 10px !important;
         margin-bottom: 4px !important;
         font-size: 11px !important;
       }
       .card-header {
-        border-bottom: 2px solid #000000 !important;
+        border-bottom: 2px solid #C8A96E !important;
         margin-bottom: 10px !important;
         padding-bottom: 6px !important;
       }
@@ -477,16 +488,18 @@
         padding: 25px 15px;
       }
       .row {
-        flex-direction: column;
+        display: block !important;
       }
       .label-col {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        padding: 8px 12px;
+        width: 100% !important;
+        display: block !important;
+        border-right: none !important;
+        border-bottom: 1px solid var(--border) !important;
+        padding: 8px 12px !important;
       }
       .value-col {
-        padding: 8px 12px;
+        display: block !important;
+        padding: 8px 12px !important;
       }
       .signature-area {
         flex-direction: column;
@@ -538,144 +551,172 @@
 
     <!-- Section 1: General Info -->
     <div class="section-title">Общие сведения</div>
-    <div class="grid-table">
-      <div class="row">
-        <div class="label-col">Полное наименование</div>
-        <div class="value-col">
-          <span class="text-to-copy">Общество с ограниченной ответственностью «Стронг»</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">Сокращенное наименование</div>
-        <div class="value-col">
-          <span class="text-to-copy">ООО «Стронг»</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">Юридический адрес</div>
-        <div class="value-col">
-          <span class="text-to-copy">367010, Республика Дагестан, г. Махачкала, пр. Амет-хана Султана, д. 10, кв. 67</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">Почтовый адрес</div>
-        <div class="value-col">
-          <span class="text-to-copy">367000, Республика Дагестан, г. Махачкала, ул. Х.Булача, д. 36</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">ИНН / КПП</div>
-        <div class="value-col">
-          <span class="text-to-copy">0562076223 / 057201001</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">ОГРН</div>
-        <div class="value-col">
-          <span class="text-to-copy">1090562002497</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">ОКАТО / ОКПО / ОКВЭД</div>
-        <div class="value-col">
-          <span class="text-to-copy">82401370 / 61871447 / 45.2</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
+    <table class="grid-table">
+      <tr class="row">
+        <td class="label-col">Полное наименование</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">Общество с ограниченной ответственностью «Стронг»</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">Сокращенное наименование</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">ООО «Стронг»</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">Юридический адрес</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">367010, Республика Дагестан, г. Махачкала, пр. Амет-хана Султана, д. 10, кв. 67</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">Почтовый адрес</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">367000, Республика Дагестан, г. Махачкала, ул. Х.Булача, д. 36</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">ИНН / КПП</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">0562076223 / 057201001</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">ОГРН</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">1090562002497</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">ОКАТО / ОКПО / ОКВЭД</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">82401370 / 61871447 / 45.2</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
 
     <!-- Section 2: Bank Details -->
     <div class="section-title">Банковские реквизиты</div>
-    <div class="grid-table">
-      <div class="row">
-        <div class="label-col">Наименование банка</div>
-        <div class="value-col">
-          <span class="text-to-copy">Ставропольское отделение № 5230 ПАО СБЕРБАНК г. Ставрополь</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">Расчётный счет</div>
-        <div class="value-col">
-          <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">40702810960320000778</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">Корреспондентский счет</div>
-        <div class="value-col">
-          <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">30101810907200000615</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">БИК банка</div>
-        <div class="value-col">
-          <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">040702615</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
+    <table class="grid-table">
+      <tr class="row">
+        <td class="label-col">Наименование банка</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">Ставропольское отделение № 5230 ПАО СБЕРБАНК г. Ставрополь</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">Расчётный счет</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">40702810960320000778</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">Корреспондентский счет</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">30101810907200000615</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">БИК банка</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">040702615</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
 
     <!-- Section 3: Administration & Contacts -->
     <div class="section-title">Администрация и контакты</div>
-    <div class="grid-table">
-      <div class="row">
-        <div class="label-col">Генеральный директор</div>
-        <div class="value-col">
-          <span class="text-to-copy">Ибрагимов Асайхан Омарасхабович (Действует на основании Устава)</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">Телефон / факс</div>
-        <div class="value-col">
-          <span class="text-to-copy">+7 (988) 777-60-08</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="label-col">Электронная почта</div>
-        <div class="value-col">
-          <span class="text-to-copy">strong-al@mail.ru</span>
-          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
-            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
+    <table class="grid-table">
+      <tr class="row">
+        <td class="label-col">Генеральный директор</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">Ибрагимов Асайхан Омарасхабович (Действует на основании Устава)</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">Телефон / факс</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">+7 (988) 777-60-08</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="label-col">Электронная почта</td>
+        <td class="value-col">
+          <div class="value-col-content">
+            <span class="text-to-copy">strong-al@mail.ru</span>
+            <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+              <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
 
     <!-- Signature Block -->
     <div class="signature-area">
