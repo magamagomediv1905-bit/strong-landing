@@ -375,6 +375,10 @@
 
     /* Print styles */
     @media print {
+      @page {
+        size: A4;
+        margin: 8mm 12mm !important;
+      }
       body {
         background-color: var(--white) !important;
         padding: 0 !important;
@@ -408,44 +412,60 @@
       .label-col {
         background-color: var(--white) !important;
         border-right: 1px solid #000000 !important;
-        padding: 6px 12px !important;
-        font-size: 11px !important;
+        padding: 4px 8px !important;
+        font-size: 10.5px !important;
+        width: 170px !important;
       }
       .value-col {
-        padding: 6px 12px !important;
-        font-size: 11px !important;
+        padding: 4px 8px !important;
+        font-size: 10.5px !important;
       }
       .grid-table {
         border: 1px solid #000000 !important;
       }
       .section-title {
         border-bottom: 1px solid #000000 !important;
-        margin-top: 15px !important;
-        margin-bottom: 6px !important;
-        font-size: 13px !important;
+        margin-top: 10px !important;
+        margin-bottom: 4px !important;
+        font-size: 11px !important;
       }
       .card-header {
         border-bottom: 2px solid #000000 !important;
-        margin-bottom: 15px !important;
-        padding-bottom: 10px !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 6px !important;
+      }
+      .logo-icon {
+        font-size: 20px !important;
+        padding: 2px 6px !important;
       }
       .logo-title {
-        font-size: 20px !important;
-      }
-      .card-title-block {
-        margin-bottom: 15px !important;
-      }
-      .card-title-block h1 {
         font-size: 18px !important;
       }
+      .logo-sub {
+        font-size: 8px !important;
+      }
+      .header-contacts {
+        font-size: 9.5px !important;
+      }
+      .card-title-block {
+        margin-bottom: 8px !important;
+      }
+      .card-title-block h1 {
+        font-size: 15px !important;
+        padding-bottom: 3px !important;
+      }
       .signature-area {
-        margin-top: 25px !important;
+        margin-top: 15px !important;
         page-break-inside: avoid !important;
       }
+      .signature-line {
+        width: 220px !important;
+      }
       .stamp-placeholder {
-        width: 80px !important;
-        height: 80px !important;
+        width: 65px !important;
+        height: 65px !important;
         font-size: 9px !important;
+        margin-right: 20px !important;
       }
     }
 
