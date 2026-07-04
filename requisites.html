@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Реквизиты ООО «СТРОНГ» — Карточка предприятия</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A3A5C;
+      --accent: #C8A96E;
+      --dark-bg: #0C1420;
+      --light-bg: #F3F1EC;
+      --white: #ffffff;
+      --text: #333333;
+      --text-muted: #666666;
+      --border: rgba(26, 58, 92, 0.15);
+      --shadow: 0 10px 30px rgba(26, 58, 92, 0.05);
+      --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Actions Bar */
+    .actions-bar {
+      width: 100%;
+      max-width: 840px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 25px;
+      background: var(--white);
+      padding: 15px 25px;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: #122942;
+      box-shadow: 0 4px 15px rgba(26, 58, 92, 0.15);
+    }
+
+    .btn-accent {
+      background-color: var(--accent);
+      color: var(--primary);
+      border-color: var(--accent);
+    }
+
+    .btn-accent:hover {
+      background-color: #bfa063;
+      border-color: #bfa063;
+      box-shadow: 0 4px 15px rgba(200, 169, 110, 0.2);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(26, 58, 92, 0.05);
+    }
+
+    /* Card Wrapper */
+    .card-container {
+      width: 100%;
+      max-width: 840px;
+      background: var(--white);
+      padding: 60px 50px;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    /* Watermark background grid */
+    .card-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(90deg, rgba(26, 58, 92, 0.012) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(26, 58, 92, 0.012) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      border-radius: 6px;
+    }
+
+    /* Header styling */
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      color: var(--primary);
+      font-weight: 700;
+      border: 2px solid var(--primary);
+      padding: 5px 12px;
+      border-radius: 4px;
+      letter-spacing: -1px;
+    }
+
+    .logo-text-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .logo-title span {
+      color: var(--accent);
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 2px;
+    }
+
+    .header-contacts {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .header-contacts p {
+      margin-bottom: 3px;
+    }
+
+    .header-contacts a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .card-title-block {
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-title-block h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .card-title-block h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    /* Sections styling */
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .grid-table {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+      position: relative;
+      z-index: 2;
+    }
+
+    .row {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background-color: var(--white);
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .row:nth-child(even) {
+      background-color: rgba(26, 58, 92, 0.01);
+    }
+
+    .label-col {
+      width: 250px;
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--primary);
+      background-color: rgba(26, 58, 92, 0.02);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+
+    .value-col {
+      flex: 1;
+      padding: 14px 20px;
+      font-size: 13px;
+      color: #333333;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 4px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      color: var(--accent);
+      background-color: rgba(200, 169, 110, 0.1);
+    }
+
+    .copy-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* Signature footer */
+    .signature-area {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      z-index: 2;
+      font-size: 13px;
+    }
+
+    .signature-line {
+      width: 280px;
+      border-bottom: 1px solid var(--primary);
+      text-align: center;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      color: var(--text-muted);
+    }
+
+    .stamp-placeholder {
+      width: 100px;
+      height: 100px;
+      border: 1px dashed var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-right: 40px;
+      opacity: 0.65;
+    }
+
+    /* Success toast notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background-color: var(--white) !important;
+        padding: 0;
+      }
+      .actions-bar {
+        display: none !important;
+      }
+      .card-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .card-container::before {
+        display: none !important;
+      }
+      .copy-btn {
+        display: none !important;
+      }
+      .row {
+        background-color: var(--white) !important;
+      }
+      .row:nth-child(even) {
+        background-color: var(--white) !important;
+      }
+      .label-col {
+        background-color: var(--white) !important;
+        border-right: 1px solid #000000 !important;
+      }
+      .grid-table {
+        border: 1px solid #000000 !important;
+      }
+      .row {
+        border-bottom: 1px solid #000000 !important;
+      }
+      .section-title {
+        border-bottom: 1px solid #000000 !important;
+      }
+      .card-header {
+        border-bottom: 2px solid #000000 !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+      }
+      .card-container {
+        padding: 30px 20px;
+      }
+      .row {
+        flex-direction: column;
+      }
+      .label-col {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 15px;
+      }
+      .value-col {
+        padding: 10px 15px;
+      }
+      .signature-area {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+      }
+      .stamp-placeholder {
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Actions Bar -->
+  <div class="actions-bar">
+    <a href="index.html" class="btn btn-outline">← На главную</a>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-accent" id="copy-all-btn">Скопировать всё</button>
+      <button class="btn btn-primary" onclick="window.print()">Печать / Сохранить в PDF</button>
+    </div>
+  </div>
+
+  <!-- Card Container -->
+  <div class="card-container">
+    
+    <!-- Header -->
+    <div class="card-header">
+      <div class="logo-block">
+        <div class="logo-icon">S</div>
+        <div class="logo-text-block">
+          <div class="logo-title">ООО <span>СТРОНГ</span></div>
+          <div class="logo-sub">Фасадные системы и остекление</div>
+        </div>
+      </div>
+      <div class="header-contacts">
+        <p>РФ, Республика Дагестан, г. Махачкала, ул. Х.Булача, 36</p>
+        <p>Тел: <a href="tel:+79887776008">+7 (988) 777-60-08</a></p>
+        <p>E-mail: <a href="mailto:strong-al@mail.ru">strong-al@mail.ru</a></p>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <div class="card-title-block">
+      <h1>Карточка реквизитов предприятия</h1>
+    </div>
+
+    <!-- Section 1: General Info -->
+    <div class="section-title">Общие сведения</div>
+    <div class="grid-table">
+      <div class="row">
+        <div class="label-col">Полное наименование</div>
+        <div class="value-col">
+          <span class="text-to-copy">Общество с ограниченной ответственностью «Стронг»</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">Сокращенное наименование</div>
+        <div class="value-col">
+          <span class="text-to-copy">ООО «Стронг»</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">Юридический адрес</div>
+        <div class="value-col">
+          <span class="text-to-copy">367010, Республика Дагестан, г. Махачкала, пр. Амет-хана Султана, д. 10, кв. 67</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">Почтовый адрес</div>
+        <div class="value-col">
+          <span class="text-to-copy">367000, Республика Дагестан, г. Махачкала, ул. Х.Булача, д. 36</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">ИНН / КПП</div>
+        <div class="value-col">
+          <span class="text-to-copy">0562076223 / 057201001</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">ОГРН</div>
+        <div class="value-col">
+          <span class="text-to-copy">1090562002497</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">ОКАТО / ОКПО / ОКВЭД</div>
+        <div class="value-col">
+          <span class="text-to-copy">82401370 / 61871447 / 45.2</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Bank Details -->
+    <div class="section-title">Банковские реквизиты</div>
+    <div class="grid-table">
+      <div class="row">
+        <div class="label-col">Наименование банка</div>
+        <div class="value-col">
+          <span class="text-to-copy">Ставропольское отделение № 5230 ПАО СБЕРБАНК г. Ставрополь</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">Расчётный счет</div>
+        <div class="value-col">
+          <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">40702810960320000778</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">Корреспондентский счет</div>
+        <div class="value-col">
+          <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">30101810907200000615</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">БИК банка</div>
+        <div class="value-col">
+          <span class="text-to-copy" style="font-family: monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">040702615</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Administration & Contacts -->
+    <div class="section-title">Администрация и контакты</div>
+    <div class="grid-table">
+      <div class="row">
+        <div class="label-col">Генеральный директор</div>
+        <div class="value-col">
+          <span class="text-to-copy">Ибрагимов Асайхан Омарасхабович (Действует на основании Устава)</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">Телефон / факс</div>
+        <div class="value-col">
+          <span class="text-to-copy">+7 (988) 777-60-08</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="label-col">Электронная почта</div>
+        <div class="value-col">
+          <span class="text-to-copy">strong-al@mail.ru</span>
+          <button class="copy-btn" title="Копировать" onclick="copyText(this)">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signature Block -->
+    <div class="signature-area">
+      <div>
+        <p style="margin-bottom: 25px; font-weight: 500;">Генеральный директор ООО «Стронг»</p>
+        <div class="signature-line"></div>
+        <p style="font-size: 11px; color: var(--text-muted);">подпись</p>
+      </div>
+      <div class="stamp-placeholder">М.П.</div>
+      <div>
+        <p style="margin-bottom: 25px; text-align: right; font-weight: 500;">Ибрагимов А.О.</p>
+        <div class="signature-line" style="border-bottom: none;"></div>
+        <p style="font-size: 11px; color: var(--text-muted); text-align: right;">расшифровка подписи</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast Message -->
+  <div id="toast" class="toast">Скопировано в буфер обмена</div>
+
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.innerText = message || 'Скопировано в буфер обмена';
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function copyText(btn) {
+      const container = btn.closest('.value-col');
+      const textSpan = container.querySelector('.text-to-copy');
+      const text = textSpan.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Значение скопировано');
+      }).catch(err => {
+        console.error('Ошибка копирования: ', err);
+      });
+    }
+
+    document.getElementById('copy-all-btn').addEventListener('click', () => {
+      const requisites = [
+        "ООО «СТРОНГ» — Карточка предприятия",
+        "------------------------------------",
+        "Полное наименование: Общество с ограниченной ответственностью «Стронг»",
+        "Сокращенное наименование: ООО «Стронг»",
+        "Юридический адрес: 367010, Республика Дагестан, г. Махачкала, пр. Амет-хана Султана, д. 10, кв. 67",
+        "Почтовый адрес: 367000, Республика Дагестан, г. Махачкала, ул. Х.Булача, д. 36",
+        "ИНН: 0562076223",
+        "КПП: 057201001",
+        "ОГРН: 1090562002497",
+        "ОКАТО: 82401370",
+        "ОКПО: 61871447",
+        "ОКВЭД: 45.2",
+        "",
+        "Банковские реквизиты:",
+        "Банк: Ставропольское отделение № 5230 ПАО СБЕРБАНК г. Ставрополь",
+        "Расчётный счет: 40702810960320000778",
+        "Корреспондентский счет: 30101810907200000615",
+        "БИК банка: 040702615",
+        "",
+        "Генеральный директор: Ибрагимов Асайхан Омарасхабович",
+        "Контакты: Тел: +7 (988) 777-60-08, E-mail: strong-al@mail.ru"
+      ].join("\n");
+
+      navigator.clipboard.writeText(requisites).then(() => {
+        showToast('Все реквизиты скопированы текстом');
+      }).catch(err => {
+        console.error('Ошибка копирования: ', err);
+      });
+    });
+  </script>
+</body>
+</html>
